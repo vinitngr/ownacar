@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities'; */
+
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+.googlehandfont{
+    font-family: "Handlee", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
