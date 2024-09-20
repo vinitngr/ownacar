@@ -19,14 +19,14 @@ function MostSearched() {
 
   return (
     <div className="mx-20 mt-24">
-      <div className=" text-center text-3xl underline p-3 googlehandfont ">
+      <div className=" text-center text-3xl p-3 googlehandfont ">
         Most Searched Cars
       </div>
 
       <Carousel >
         <CarouselContent >
           {fakeData.carList.map((car, index) => (
-            <CarouselItem className='basis-1/4 -translate-x-16' key={index}>
+            <CarouselItem className='flex justify-center md:basis-1/2 lg:basis-1/3 mx-3 2xl:basis-1/4 ' key={index}>
               <CarItem car={car} />
             </CarouselItem>
           ))}

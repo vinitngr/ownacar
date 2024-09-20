@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 function CarItem({ car }) {
   return (
-    <div className="p-20">
+    <div className="p-14 select-none">
       <div className="border-2 border-zinc-900 rounded-xl w-[300px] p-2 bg-yellow-50">
         <div className="w-[100%] h-[200px] rounded-xl border-2 border-black overflow-hidden">
           <img
             src="https://a4.pbase.com/o12/65/1039165/1/173131788.M7hM7s5O.BB021511SkyResize.jpg"
             className="w-[100%]"
-            alt={car?.name}
+            alt={car?.name} 
           />
         </div>
-        <div className="text-xl font-semibold googlehandfont border-b-2 py-2 mx-1 border-black">
+        <div className="text-xl font-semibold googlehandfont border-b-2 py-2 mx-1 truncate border-black">
           {car.name}
         </div>
         <div className="flex justify-between mx-1 p-6 border-b-2 border-black">
