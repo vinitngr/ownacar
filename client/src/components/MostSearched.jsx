@@ -31,8 +31,8 @@ function MostSearched() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious  className='bg-blue-700 text-white '/>
-        <CarouselNext className='bg-blue-700 text-white' />
+        <CarouselPrevious />
+        <CarouselNext/>
       </Carousel>
 
     

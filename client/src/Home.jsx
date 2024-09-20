@@ -7,13 +7,17 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Category from "./components/Category";
 import MostSearched from "./components/MostSearched";
+import Footer from "./components/Footer";
+import Other from "./components/Other";
 function Home() {
   return (
-    <div className="h-[3000px]">
+    <div>
       <Header/>
       <Hero/>
       <Category/>
       <MostSearched/>
+      <Other/>
+      <Footer/>
     </div>
   );
 }

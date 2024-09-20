@@ -5,7 +5,7 @@ function CarItem({ car }) {
       <div className="border-2 border-zinc-900 rounded-xl w-[300px] p-2 bg-yellow-50">
         <div className="w-[100%] h-[200px] rounded-xl border-2 border-black overflow-hidden">
           <img
-            src="https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcTM8tlMo9OSL_hdj71kiHXQtKer1AbHAJdGiZin2Dl8ErqOMqpreKOnOT3fZv1pvYRl"
+            src="https://a4.pbase.com/o12/65/1039165/1/173131788.M7hM7s5O.BB021511SkyResize.jpg"
             className="w-[100%]"
             alt={car?.name}
           />
