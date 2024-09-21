@@ -7,9 +7,9 @@ function Index() {
         <Header/>
         <div className="p-10">
             <div className="flex justify-between">
-                <div className="text-2xl font-bold">My Listing</div>
+                <div className="text-3xl googlehandfont font-bold">My Listing</div>
                 <Link to={'/addListing'}>
-                <Button className="bg-blue-600 rounded-full text-white hover:text-black ">+Add New Listing</Button>
+                <Button className="bg-blue-600 googlehandfont rounded-full text-white hover:text-black ">+Add New Listing</Button>
                 </Link> 
                 </div>
         </div>

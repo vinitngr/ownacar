@@ -12,7 +12,11 @@ function header() {
     <div className="flex justify-between items-center p-3 ring-1 ring-black m-3 rounded-xl">
       <div className="flex items-center gap-2 googlehandfont ">
         <img src="/logo.svg" />
-        <p className="text-xl font-bold mb-1 sm:block hidden">OwnaCar</p>
+        <Link to="/">
+          <p className="text-xl font-bold mb-1 sm:block hidden">
+            OwnaCar
+          </p>
+        </Link>
       </div>
       <div className="md:flex gap-12 font-bold googlehandfont md:visible hidden
       ">
@@ -29,7 +33,7 @@ function header() {
           </SignInButton>
         )}
         <Link to={'/profile'} >
-        <Button className="bg-blue-700 text-white rounded-xl hover:text-black">SUBMIT LISTING</Button>
+          <Button className="bg-blue-700 text-white rounded-xl hover:text-black">SUBMIT LISTING</Button>
         </Link>
       </div>
     </div>
