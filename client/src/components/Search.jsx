@@ -11,7 +11,7 @@ import Data from "./data/cars-data";
 import { IoIosSearch } from "react-icons/io";
 function Search() {
     return (
-        <div className="flex gap-4 p-2 shadow-md bg-white rounded-full items-center w-[90vw] md:w-[700px] mt-2">
+        <div className="flex flex-col md:flex-row md:w-[80%] xl:w-[60%] gap-4 p-2 shadow-md bg-white md:rounded-full items-center w-fit rounded-xl  mt-2">
             <Select>
                 <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow ">
                     <SelectValue placeholder="Cars" />
@@ -50,7 +50,7 @@ function Search() {
                 </SelectContent>
             </Select>
 
-            <IoIosSearch className="size-8 bg-blue-600 text-white rounded-full hover:scale-125 cursor-pointer transition-all duration-150 p-1" />
+            <IoIosSearch className="md:size-8 w-full h-6     bg-blue-600 text-white rounded-full hover:scale-125 cursor-pointer transition-all duration-150 p-1 " />
         </div>
     );
 }
