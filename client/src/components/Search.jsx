@@ -11,7 +11,7 @@ import Data from "./data/cars-data";
 import { IoIosSearch } from "react-icons/io";
 function Search() {
     return (
-        <div className="flex gap-4 p-2 shadow-md bg-white rounded-full items-center w-[90vw] xl:w-[700px] mt-2">
+        <div className="flex gap-4 p-2 shadow-md bg-white rounded-full items-center w-[90vw] md:w-[700px] mt-2">
             <Select>
                 <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow ">
                     <SelectValue placeholder="Cars" />
