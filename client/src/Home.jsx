@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 import Other from "./components/Other";
 function Home() {
   return (
-    <div>
+    <div className="selection:bg-yellow-200">
       <Header/>
       <Hero/>
       <Category/>

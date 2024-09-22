@@ -3,7 +3,7 @@ function footer() {
   return (
     <div>
 
-<footer className="bg-cyan-200 ring-2 ring-black m-10">
+<footer className="bg-cyan-200 ring-2 ring-black m-10" >
   <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
@@ -16,7 +16,7 @@ function footer() {
           molestias.
         </p>
 
-        <ul className="mt-8 flex gap-6">
+        <ul className="mt-8 flex gap-6 " id="footer">
           <li>
             <a
               href="#"

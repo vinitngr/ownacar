@@ -22,7 +22,8 @@ function header() {
       ">
         <div>home</div>
         <div>Search</div>
-        <div>Contact</div>
+        <div
+        onClick={() => window.location.href='#footer'}>Contact</div>
       </div>
       <div className="flex gap-4 w-fit">
         {isSignedIn ? (
@@ -32,7 +33,7 @@ function header() {
             <Button className="bg-blue-700 text-white rounded-xl hover:text-black">Sign In</Button>
           </SignInButton>
         )}
-        <Link to={'/profile'} >
+        <Link to={isSignedIn? '/profile': 'https://dominant-duck-72.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A5173%2F'} >
           <Button className="bg-blue-700 text-white rounded-xl hover:text-black">SUBMIT LISTING</Button>
         </Link>
       </div>
