@@ -11,7 +11,7 @@ function header() {
       <div className="flex items-center gap-2 googlehandfont ">
         <img src="/logo.svg" />
         <Link to="/">
-          <p className="text-xl font-bold mb-1 sm:block hidden">
+          <p className="text-xl font-bold mb-1 sm:block hidden ">
             OwnaCar
           </p>
         </Link>

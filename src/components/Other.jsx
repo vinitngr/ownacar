@@ -4,7 +4,7 @@ function Other() {
     <section>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
     <header className="text-center">
-      <h2 className="text-xl font-bold text-gray-900 sm:text-3xl ">New Collection of Cars</h2>
+      <h2 className="text-xl font-bold text-gray-900 sm:text-3xl googlehandfont">New Collection of Cars</h2>
 
       <p className="mx-auto mt-10 text-gray-500 under">
       Explore our latest selection of premium vehicles. Whether you`re seeking luxury, efficiency, or adventure, we have the perfect car for you. Discover models that blend innovative technology with exceptional design, ensuring a driving experience like no other. Don’t miss out on your dream car—check out our collection today!
