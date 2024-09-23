@@ -7,7 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import Data from "./data/cars-data";
+import Data from "../data/cars-data";
 import { IoIosSearch } from "react-icons/io";
 function Search() {
     return (

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import Data from './data/cars-data'
+import Data from '../data/cars-data'
 function Category() {
   return (
     <div className='flex flex-col mt-44 items-center '>

@@ -1,5 +1,5 @@
-// import carList from "./data/fakeData";
-import fakeData from "./data/fakeData";
+/// import carList from "./data/fakeData";
+import fakeData from "../data/fakeData";
 import {
   Carousel,
   CarouselContent,
