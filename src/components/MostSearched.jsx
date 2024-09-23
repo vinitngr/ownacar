@@ -11,7 +11,6 @@ import {
 import CarItem from "./CarItem";
 
 function MostSearched() {
-    console.log(fakeData.carList)
   if (!fakeData.carList) {
     return <div>no data</div>;
   }

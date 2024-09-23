@@ -5,8 +5,22 @@ import Dropdown from "./components/dropdown";
 import inputFieldData from "../data/inputFieldData.json";
 import Textarea from "./components/textarea";
 import Features from "../data/Features.json";
+import { useState } from "react";
 
 function AddListing() {
+  const [formData, setfromData] = useState([]);
+  const handleInputData = (name, value) => {
+    setfromData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    // console.log(formData);
+  };
+
+  const onSubmit= (e)=>{
+     e.preventDefault() 
+     console.log(formData)
+  }
   return (
     <div>
       <Header />
@@ -31,11 +45,14 @@ function AddListing() {
                     </label>
                     {item.fieldType === "text" ||
                     item.fieldType === "number" ? (
-                      <InputField item={item} />
+                      <InputField
+                        item={item}
+                        handleInputData={handleInputData}
+                      />
                     ) : item.fieldType === "dropdown" ? (
-                      <Dropdown item={item} />
+                      <Dropdown item={item} handleInputData={handleInputData} />
                     ) : item.fieldType === "textarea" ? (
-                      <Textarea item={item} />
+                      <Textarea item={item} handleInputData={handleInputData} />
                     ) : null}
                   </div>
                 ))}
@@ -50,6 +67,8 @@ function AddListing() {
                     <label className="flex items-center flex-row-reverse">
                       {item.label}
                       <input
+                        onChange={(e) =>
+                          handleInputData(item.name, e.target.checked)}
                         className="m-2 size-4"
                         name={item.name}
                         placeholder={item.label}
@@ -62,6 +81,7 @@ function AddListing() {
             </div>
             <div className="flex justify-end">
               <button
+                onClick={(e)=> onSubmit(e)}
                 type="submit"
                 className="bg-blue-500 googlehandfont hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-end"
               >

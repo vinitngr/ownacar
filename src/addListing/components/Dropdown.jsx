@@ -8,11 +8,12 @@ import {
     SelectValue,
   } from "@/components/ui/select"
   
-function Dropdown({item}) {
-    console.log(item)
+function Dropdown({item , handleInputData}) {
   return (
     <div>
-      <Select name={item.name} placeholder={item.label} type={item.fieldType} required={item.required}  >
+      <Select 
+      onValueChange={(value) => handleInputData(item.name, value)}  
+      name={item.name} placeholder={item.label} type={item.fieldType} required={item.required}  >
         <SelectTrigger className="w-full rounded mt-1 h-10 " >
           <SelectValue placeholder={item.label} />
         </SelectTrigger>
