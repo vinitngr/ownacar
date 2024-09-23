@@ -78,14 +78,16 @@
         "Chrysler",
         "Mazda",
         "Subaru"
-      ]
+      ],
+      "required": true
     },
     {
       "label": "Year",
       "name": "year",
       "fieldType": "number",
       "column": 2,
-      "icon": "year-icon"
+      "icon": "year-icon",
+      "required": true
     },
     {
       "label": "Drive Type",
@@ -93,7 +95,8 @@
       "fieldType": "dropdown",
       "column": 2,
       "icon": "drive-icon",
-      "options": ["4WD", "FWD", "RWD", "AWD"]
+      "options": ["4WD", "FWD", "RWD", "AWD"],
+      "required": true
     },
     {
       "label": "Cylinder",
@@ -108,7 +111,8 @@
       "fieldType": "dropdown",
       "column": 2,
       "icon": "color-icon",
-      "options": ["red", "blue", "green", "black", "white", "other"]
+      "options": ["red", "blue", "green", "black", "white", "other"],
+      "required": true
     },
     {
       "label": "Offer Type",
@@ -123,7 +127,8 @@
       "fieldType": "dropdown",
       "column": 2,
       "options": ["automated", "manual "],
-      "icon": "fuelType-icon"
+      "icon": "fuelType-icon",
+      "required": true
     },
 
     {
@@ -145,7 +150,8 @@
       "name": "mileage",
       "fieldType": "number",
       "column": 2,
-      "icon": "mileage-icon"
+      "icon": "mileage-icon",
+      "required": true
     },
     {
       "label": "Transmission",
@@ -153,7 +159,8 @@
       "fieldType": "dropdown",
       "column": 2,
       "icon": "transmission-icon",
-      "options": ["Automatic", "Manual", "CVT", "Semi-Automatic"]
+      "options": ["Automatic", "Manual", "CVT", "Semi-Automatic"],
+      "required": true
     },
     {
       "label": "Listing Description",
@@ -161,7 +168,7 @@
       "fieldType": "textarea",
       "column": 2,
       "icon": "description-icon",
-      "required": true
+      "required": true  
     }
   ]
 }

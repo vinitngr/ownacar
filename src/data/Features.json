@@ -1,0 +1,143 @@
+{
+    "features" :[
+    {
+      "label": "Tachometer",
+      "name": "tachometer",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Anti-lock Braking System (ABS)",
+      "name": "abs",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Brake Assist",
+      "name": "brake_assist",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Self-driving Feature",
+      "name": "self_driving",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Air Conditioning (AC)",
+      "name": "ac",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Power Steering",
+      "name": "power_steering",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Power Windows",
+      "name": "power_windows",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Central Locking",
+      "name": "central_locking",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Cruise Control",
+      "name": "cruise_control",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Rear Parking Sensors",
+      "name": "rear_parking_sensors",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Rearview Camera",
+      "name": "rearview_camera",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Fog Lights",
+      "name": "fog_lights",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Sunroof",
+      "name": "sunroof",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Heated Seats",
+      "name": "heated_seats",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Autodriver",
+      "name": "autodriver",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Keyless Entry",
+      "name": "keyless_entry",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Lane Departure Warning",
+      "name": "lane_departure_warning",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Blind Spot Detection",
+      "name": "blind_spot_detection",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Traction Control",
+      "name": "traction_control",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Tyre Pressure Monitoring System",
+      "name": "tyre_pressure_monitoring",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Adaptive Headlights",
+      "name": "adaptive_headlights",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Electric Mirrors",
+      "name": "electric_mirrors",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Remote Start",
+      "name": "remote_start",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "GPS Navigation System",
+      "name": "gps_navigation",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Automatic Emergency Braking",
+      "name": "automatic_emergency_braking",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Hill Descent Control",
+      "name": "hill_descent_control",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Bluetooth",
+      "name": "bluetooth",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Speaker",
+      "name": "speaker",
+      "fieldType": "checkbox"
+    }
+]}

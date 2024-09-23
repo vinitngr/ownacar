@@ -13,7 +13,7 @@ function Dropdown({item}) {
   return (
     <div>
       <Select name={item.name} placeholder={item.label} type={item.fieldType} required={item.required}  >
-        <SelectTrigger className="w-full rounded-xl mt-1 h-10 " >
+        <SelectTrigger className="w-full rounded mt-1 h-10 " >
           <SelectValue placeholder={item.label} />
         </SelectTrigger>
         <SelectContent className='bg-white '>
