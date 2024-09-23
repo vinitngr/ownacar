@@ -18,22 +18,22 @@ function header() {
       </div>
       <div className="md:flex gap-12 font-bold googlehandfont md:visible hidden
       ">
-        <div>home</div>
-        <div>Search</div>
+        <div className="cursor-pointer">home</div>
+        <div className="cursor-pointer">Search</div>
         <div
-          onClick={() => window.location.href = '#footer'}>Contact</div>
-      </div>
+          onClick={() => window.location.href = '#footer'} className="cursor-pointer">Contact</div>
+        </div>
       <div className="flex gap-4 w-fit">
         {isSignedIn ? (
           <UserButton />
         ) : (
           <SignInButton>
-            <Button className="bg-blue-700 text-white rounded-xl hover:text-black">Sign In</Button>
+            <Button className="bg-blue-700 text-white  hover:text-black">Sign In</Button>
           </SignInButton>
         )}
 
         <Link to={isSignedIn ? '/profile' : '/404'}>
-          <Button className="bg-blue-700 text-white rounded-xl hover:text-black">SUBMIT LISTING</Button>
+          <Button className="bg-blue-700 text-white rounded hover:text-black">SUBMIT LISTING</Button>
         </Link>
 
 

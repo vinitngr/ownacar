@@ -1,5 +1,5 @@
 import { SignInButton } from "@clerk/clerk-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 const NotFound = () => {
     return (

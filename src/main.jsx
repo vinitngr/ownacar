@@ -7,8 +7,8 @@ import AddListing from './addListing';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ClerkProvider } from '@clerk/clerk-react';
 // import { SignedOut, SignedIn} from '@clerk/clerk-react';
-import ProtectedRoute   from './components/protectedroute';
-import NotFound from './components/notfound';
+import ProtectedRoute   from './components/securejsx/ProtectedRoute';
+import NotFound from './components/securejsx/NotFound';
 
 
 const router = createBrowserRouter([
