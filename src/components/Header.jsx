@@ -34,9 +34,10 @@ function header() {
           </SignInButton>
         )}
 
-        <Link to={isSignedIn ? '/profile' : 'https://dominant-duck-72.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A5173%2Fprofile'}>
+        <Link to={isSignedIn ? '/profile' : 'https://dominant-duck-72.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A5173%2FaddListing'}>
           <Button className="bg-blue-700 text-white rounded-xl hover:text-black">SUBMIT LISTING</Button>
         </Link>
+
 
       </div>
     </div>
