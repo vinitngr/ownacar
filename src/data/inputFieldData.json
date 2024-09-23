@@ -1,138 +1,167 @@
-{ "inputFields": [
+{
+  "inputFields": [
     {
-        "label": "Listing Title",
-        "name": "listingTitle",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "listing-icon",
-        "required": true
+      "label": "Listing Title",
+      "name": "listingTitle",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "listing-icon",
+      "required": true
     },
     {
-        "label": "Tagline",
-        "name": "tagline",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "tagline-icon"
+      "label": "Tagline",
+      "name": "tagline",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "tagline-icon"
     },
     {
-        "label": "Original Price",
-        "name": "originalPrice",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "price-icon",
-        "required": true
+      "label": "Original Price",
+      "name": "originalPrice",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "price-icon",
+      "required": true
     },
     {
-        "label": "Selling Price",
-        "name": "sellingPrice",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "price-icon",
-        "required": true
+      "label": "Selling Price",
+      "name": "sellingPrice",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "price-icon",
+      "required": true
     },
     {
-        "label": "Category",
-        "name": "category",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "category-icon",
-        "required": true,
-        "options": ["Electronics", "Vehicles", "Real Estate", "Clothing", "Furniture"]
+      "label": "Category",
+      "name": "category",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "category-icon",
+      "required": true,
+      "options": ["Sedan", "SUV", "coupe" , "hybrid" ,"convertible" , "Minivan","Truck", "Motorcycle", "HetchBack"]
     },
     {
-        "label": "Condition",
-        "name": "condition",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "condition-icon",
-        "required": true,
-        "options": ["New", "Used - Like New", "Used - Good", "Used - Fair"]
+      "label": "Condition",
+      "name": "condition",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "condition-icon",
+      "required": true,
+      "options": ["New", "Used - Like New", "Used - Good", "Used - Fair"]
     },
     {
-        "label": "Type",
-        "name": "type",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "type-icon"
+      "label": "Type",
+      "name": "type",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "type-icon"
     },
     {
-        "label": "Maker",
-        "name": "maker",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "maker-icon",
-        "options": [
-            "Toyota",
-            "Ford",
-            "Honda",
-            "Chevrolet",
-            "Nissan",
-            "Volkswagen",
-            "Hyundai",
-            "Kia",
-            "BMW",
-            "Mercedes-Benz",
-            "Jeep",
-            "Dodge",
-            "Chrysler",
-            "Mazda",
-            "Subaru"
-        ]
+      "label": "Maker",
+      "name": "maker",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "maker-icon",
+      "options": [
+        "Toyota",
+        "Ford",
+        "Honda",
+        "Chevrolet",
+        "Nissan",
+        "Volkswagen",
+        "Hyundai",
+        "Kia",
+        "BMW",
+        "Mercedes-Benz",
+        "Jeep",
+        "Dodge",
+        "Chrysler",
+        "Mazda",
+        "Subaru"
+      ]
     },
     {
-        "label": "Year",
-        "name": "year",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "year-icon"
+      "label": "Year",
+      "name": "year",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "year-icon"
     },
     {
-        "label": "Drive Type",
-        "name": "driveType",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "drive-icon",
-        "options": ["4WD", "FWD", "RWD", "AWD"]
+      "label": "Drive Type",
+      "name": "driveType",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "drive-icon",
+      "options": ["4WD", "FWD", "RWD", "AWD"]
     },
     {
-        "label": "Cylinder",
-        "name": "cylinder",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "cylinder-icon"
+      "label": "Cylinder",
+      "name": "cylinder",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "cylinder-icon"
     },
     {
-        "label": "Color",
-        "name": "color",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "color-icon",
-        "options" : [
-            "red" , "blue" , "green" , "black" , "white" , "other"
-        ]
+      "label": "Color",
+      "name": "color",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "color-icon",
+      "options": ["red", "blue", "green", "black", "white", "other"]
     },
     {
-        "label": "Offer Type",
-        "name": "offerType",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "offer-icon"
+      "label": "Offer Type",
+      "name": "offerType",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "offer-icon"
     },
     {
-        "label": "fuel type",
-        "name": "fuelType",
-        "fieldType": "dropdown",
-        "column": 2,
-        "options":["automated" , "manual "],
-        "icon": "fuelType-icon"
+      "label": "fuel type",
+      "name": "fuelType",
+      "fieldType": "dropdown",
+      "column": 2,
+      "options": ["automated", "manual "],
+      "icon": "fuelType-icon"
+    },
+
+    {
+      "label": "VIN",
+      "name": "vin",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "vin-icon"
     },
     {
-        "label": "Listing Description",
-        "name": "listingDescription",
-        "fieldType": "textarea",
-        "column": 2,
-        "icon": "description-icon",
-        "required": true
+      "label": "Engine Size",
+      "name": "engineSize",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "engine-size-icon"
+    },
+    {
+      "label": "Mileage",
+      "name": "mileage",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "mileage-icon"
+    },
+    {
+      "label": "Transmission",
+      "name": "transmission",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "transmission-icon",
+      "options": ["Automatic", "Manual", "CVT", "Semi-Automatic"]
+    },
+    {
+      "label": "Listing Description",
+      "name": "listingDescription",
+      "fieldType": "textarea",
+      "column": 2,
+      "icon": "description-icon",
+      "required": true
     }
-]
+  ]
 }

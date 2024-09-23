@@ -15,7 +15,7 @@ function AddListing() {
         </h1>
         <form>
           <div className="flex flex-col gap-3">
-            <div className="border-zinc-400 border-2 p-5 pt-10 grid grid-cols-2 gap-3">
+            <div className="border-zinc-400 border-2 p-5 pt-10 grid grid-cols-1 md:grid-cols-2 gap-3">
               {inputFieldData.inputFields.map((item, index) => (
                 <div key={index}>
                   <label className="">{item.label}{item.required ? (<label className="text-red-500 ml-1">*</label>) : ""}</label>
@@ -27,7 +27,8 @@ function AddListing() {
                 </div>
               ))}
             </div>
-            <div className="bg-red-100 h-96"></div>
+            <h2 className="googlehandfont text-3xl">Features</h2>
+            <div className="ring-1 ring-zinc-500 h-96"></div>
             <div className="flex justify-end">
               <button
                 type="submit"
