@@ -6,23 +6,40 @@ import Index from './profile';
 import AddListing from './addListing';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ClerkProvider } from '@clerk/clerk-react';
+// import { SignedOut, SignedIn} from '@clerk/clerk-react';
+import ProtectedRoute   from './components/protectedroute';
+import NotFound from './components/notfound';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <TitleWrapper title="Home - OwnaCar" component={<Home />} /> ,
+    element: <TitleWrapper title="Home - OwnaCar" component={<Home />} />,
   },
   {
     path: "/profile",
-    element: <TitleWrapper title="Profile - OwnaCar" component={<Index />} />,
+    element: (
+      <ProtectedRoute>
+        <TitleWrapper title="Profile - OwnaCar" component={<Index />} />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/addListing",
-    element: <TitleWrapper title="Add Listing - OwnaCar" component={<AddListing />} />,
+    element: (
+      <ProtectedRoute>
+        <TitleWrapper title="Add Listing - OwnaCar" component={<AddListing />} />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/404",
+    element: <NotFound />,
   },
 ]);
 
-// Wrapper to handle setting the document title
+
+// eslint-disable-next-line react-refresh/only-export-components
 function TitleWrapper({ title, component }) {
   document.title = title;
   return component;
