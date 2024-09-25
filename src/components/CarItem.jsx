@@ -3,7 +3,7 @@ function CarItem({ car }) {
   return (
     <div className="p-14 select-none">
       <div className="border-2 border-zinc-900 rounded-xl w-[300px] p-2 bg-yellow-50">
-        <div className="w-[100%] h-[200px] rounded-xl border-2 border-black overflow-hidden">
+        <div className="w-[100%] h-[200px] rounded-xl border-2 border-black bg-blue-100 overflow-hidden">
           <img
             src="https://a4.pbase.com/o12/65/1039165/1/173131788.M7hM7s5O.BB021511SkyResize.jpg"
             className="w-[100%]"

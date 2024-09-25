@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function header() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const {isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
   return (
     <div className="flex justify-between items-center p-3 ring-1 ring-black m-3 rounded-xl">
       <div className="flex items-center gap-2 googlehandfont ">
@@ -18,11 +18,30 @@ function header() {
       </div>
       <div className="md:flex gap-12 font-bold googlehandfont md:visible hidden
       ">
-        <div className="cursor-pointer">home</div>
+        <Link to="/">
+        <div className="cursor-pointer">home</div></Link>
         <div className="cursor-pointer">Search</div>
         <div
-          onClick={() => window.location.href = '#footer'} className="cursor-pointer">Contact</div>
+          // onClick={() => {
+          //   if (window.document.name === 'home') {
+          //     window.location.href = '#footer';
+          //   } else {
+          //     window.location.href = '../../try.html'; // Replace with your desired route
+          //   }
+          // }}
+          onClick={() => {
+            window.document.title == "Home - OwnaCar" ?
+              window.location.href = '#footer' :
+              window.location.href = '../../try.html'; // Replace with your desired route
+
+          }}
+          className="cursor-pointer"
+        >
+          Contact
         </div>
+
+
+      </div>
       <div className="flex gap-4 w-fit">
         {isSignedIn ? (
           <UserButton />
