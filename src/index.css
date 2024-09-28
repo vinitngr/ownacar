@@ -15,10 +15,6 @@
 html{
   scroll-behavior: smooth;
 }
-/* ::selection{
-  color: white;
-  background: #000;
-} */
 .googlehandfontlb{
   font-family: "Handlee", cursive;
 font-weight:400;
