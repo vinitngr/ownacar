@@ -50,7 +50,7 @@ function CarItem({ car }) {
           <div className="text-lg font-semibold googlehandfont">
             ${car.price}
           </div>
-          <a href="#" className="text-blue-700 underline">
+          <a href="#" className="text-blue-700">
             View Details
           </a>
         </div>
