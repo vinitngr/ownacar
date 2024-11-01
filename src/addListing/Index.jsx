@@ -9,6 +9,8 @@ import Textarea from "./components/textarea";
 import Features from "../data/Features.json";
 import { useState } from "react";
 import UploadImage from "./components/UploadImage";
+import { db } from "..";
+import { listingsTable } from "../db/schema";
 function AddListing() {
   const [formData, setfromData] = useState([]);
   const [features, setFeatures] = useState([]);
@@ -27,11 +29,12 @@ function AddListing() {
     }));
   }
 
-  const onSubmit= (e)=>{
+  const onSubmit= async (e)=>{
      e.preventDefault() 
      console.log(formData)
      console.log(features)
      console.log(images)
+     await db.insert(listingsTable).values(formData)
   }
 
 
