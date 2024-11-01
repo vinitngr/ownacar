@@ -1,42 +1,51 @@
-
-
+import { useUser } from "@clerk/clerk-react";
 import Header from "@/components/Header";
 import InputField from "./components/InputField";
 import Dropdown from "./components/dropdown";
-// import inputfielddata from '../data/i'
 import inputFieldData from "../data/inputFieldData.json";
 import Textarea from "./components/textarea";
 import Features from "../data/Features.json";
 import { useState } from "react";
 import UploadImage from "./components/UploadImage";
-import { db } from "..";
-import { listingsTable } from "../db/schema";
+import { db } from "@/lib/db";
+import { listingsTable } from "../lib/schema";
+import { useNavigate } from "react-router-dom";
+
 function AddListing() {
-  const [formData, setfromData] = useState([]);
-  const [features, setFeatures] = useState([]);
-  const [images, setimages] = useState([])
+  const navigate = useNavigate()
+  const { user } = useUser(); 
+  const [formData, setFromData] = useState({}); 
+  const [features, setFeatures] = useState({});
+  const [images, setImages] = useState([]);
+
   const handleInputData = (name, value) => {
-    setfromData((prev) => ({
+    setFromData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleFeatures = (name , value) => {
+  const handleFeatures = (name, value) => {
     setFeatures((prev) => ({
       ...prev,
       [name]: value,
     }));
-  }
+  };
 
-  const onSubmit= async (e)=>{
-     e.preventDefault() 
-     console.log(formData)
-     console.log(features)
-     console.log(images)
-     await db.insert(listingsTable).values(formData)
-  }
-
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (!user) {
+      console.error("User not authenticated");
+      return; 
+    }
+    console.log(user.id);
+    try {
+      await db.insert(listingsTable).values({ ...formData, sellersId: user.id });
+      navigate('/profile');
+    } catch (error) {
+      console.error("Error inserting data:", error);
+    }
+  };
 
   return (
     <div>
@@ -45,26 +54,19 @@ function AddListing() {
         <h1 className="text-2xl font-bold googlehandfont mb-3">
           Add New Listing
         </h1>
-        <form
-        onSubmit={(e)=> onSubmit(e)}>
+        <form onSubmit={onSubmit}>
           <div className="flex flex-col gap-3">
             <div className="border-zinc-400 border-2 p-5 ">
-              <div className="mb-4 text-xl googlehandfontlb">car details</div>
+              <div className="mb-4 text-xl googlehandfontlb">Car Details</div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {inputFieldData.inputFields.map((item, index) => (
                   <div key={index}>
-                    <label className="">
+                    <label>
                       {item.label}
-                      {item.required ? (
-                        <label className="text-red-500 ml-1">*</label>
-                      ) : (
-                        ""
-                      )}
+                      {item.required ? <label className="text-red-500 ml-1">*</label> : ""}
                     </label>
-                    {item.fieldType === "text" ||
-                    item.fieldType === "number" ? 
-                    (
-                      <InputField item={item} handleInputData={handleInputData}/>
+                    {item.fieldType === "text" || item.fieldType === "number" ? (
+                      <InputField item={item} handleInputData={handleInputData} />
                     ) : item.fieldType === "dropdown" ? (
                       <Dropdown item={item} handleInputData={handleInputData} />
                     ) : item.fieldType === "textarea" ? (
@@ -74,7 +76,6 @@ function AddListing() {
                 ))}
               </div>
             </div>
-            {/* <h2 className="googlehandfont text-3xl">Features</h2> */}
             <div className="ring-1 ring-zinc-500 p-5 ">
               <div className="googlehandfontlb mb-2 text-xl ">Features</div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -83,11 +84,9 @@ function AddListing() {
                     <label className="flex items-center flex-row-reverse">
                       {item.label}
                       <input
-                        onChange={(e) =>
-                          handleFeatures(item.name, e.target.checked)}
+                        onChange={(e) => handleFeatures(item.name, e.target.checked)}
                         className="m-2 size-4"
                         name={item.name}
-                        placeholder={item.label}
                         type={item.fieldType}
                       />
                     </label>
@@ -95,13 +94,13 @@ function AddListing() {
                 ))}
               </div>
             </div>
-            <div className=" border-2 border-zinc-400 p-5">
-              <UploadImage images={images} setimages={setimages}/>
+            <div className="border-2 border-zinc-400 p-5">
+              <UploadImage images={images} setImages={setImages} />
             </div>
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="bg-blue-500 googlehandfont hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-end">
+                className="bg-blue-500 googlehandfont hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 SUBMIT
               </button>
             </div>

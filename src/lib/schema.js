@@ -2,6 +2,7 @@ import { integer, pgTable, varchar , numeric , text} from "drizzle-orm/pg-core";
 
 export const listingsTable = pgTable("listings", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  sellersId : varchar({ length: 255 }).notNull(),
   listingTitle: varchar({ length: 255 }).notNull(),
   tagline: varchar({ length: 255 }),
   originalPrice: numeric().notNull(),
