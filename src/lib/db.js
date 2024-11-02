@@ -1,5 +1,5 @@
 import { drizzle } from "drizzle-orm/neon-http";
-import { neon , neonConfig } from "@neondatabase/serverless";
+import { neon } from "@neondatabase/serverless";
+import * as schema from "../lib/schema.js";
 const sql = neon(import.meta.env.VITE_NEON_DATABASE_URL);
-neonConfig.fetchConnectionCache=  true ; 
-export const db= drizzle(sql);
+export const db= drizzle(sql , {schema});

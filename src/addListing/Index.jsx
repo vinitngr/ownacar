@@ -31,17 +31,15 @@ function AddListing() {
       [name]: value,
     }));
   };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
       console.error("User not authenticated");
       return; 
     }
-    console.log(user.id);
     try {
-      await db.insert(listingsTable).values({ ...formData, sellersId: user.id });
-      navigate('/profile');
+      await db.insert(listingsTable).values({ ...formData, sellersId: user.id , features: JSON.stringify(features)});
+      // navigate('/profile');
     } catch (error) {
       console.error("Error inserting data:", error);
     }

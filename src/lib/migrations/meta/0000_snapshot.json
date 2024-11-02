@@ -1,5 +1,5 @@
 {
-  "id": "8ddb6726-f537-4474-bd6d-a1ceaa896886",
+  "id": "c3be50f4-9521-4cce-a106-c3ed2fa886d1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -30,6 +30,13 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         },
         "listingTitle": {
           "name": "listingTitle",
@@ -144,6 +151,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "features": {
+          "name": "features",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

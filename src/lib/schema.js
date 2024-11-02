@@ -1,8 +1,9 @@
-import { integer, pgTable, varchar , numeric , text} from "drizzle-orm/pg-core";
+import { integer, pgTable, varchar , numeric , text, json, date} from "drizzle-orm/pg-core";
 
 export const listingsTable = pgTable("listings", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   sellersId : varchar({ length: 255 }).notNull(),
+  createdAt: date("created_at").defaultNow(),
   listingTitle: varchar({ length: 255 }).notNull(),
   tagline: varchar({ length: 255 }),
   originalPrice: numeric().notNull(),
@@ -21,5 +22,6 @@ export const listingsTable = pgTable("listings", {
   engineSize: numeric(),
   mileage: numeric().notNull(),
   transmission: varchar({ length: 255 }).notNull(),
-  listingDescription: text().notNull()
+  listingDescription: text().notNull(),
+  features : json() 
 });
