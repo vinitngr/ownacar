@@ -35,7 +35,8 @@ function Index() {
           </Link>
         </div>
 
-        <div className="mt-5 grid xl:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 sm:gridcol2 gap-4">
+        <div
+        className="mt-5 grid xl:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 sm:gridcol2 gap-4">
           {listings.length > 0 ? (
             listings.map((listing, index) => (
               <div key={index} className="p-3 border-b border-gray-200 border-2">

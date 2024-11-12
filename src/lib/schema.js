@@ -25,3 +25,10 @@ export const listingsTable = pgTable("listings", {
   listingDescription: text().notNull(),
   features : json() 
 });
+
+
+export const carImages= pgTable('carImages' , {
+    id: integer().primaryKey(),
+    imageURL : varchar('imageUrl').notNull(),
+    carListingId : integer('carListinId').notNull().references(()=> listingsTable.id)
+})

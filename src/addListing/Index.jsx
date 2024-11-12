@@ -17,6 +17,7 @@ function AddListing() {
   const [formData, setFromData] = useState({}); 
   const [features, setFeatures] = useState({});
   const [images, setImages] = useState([]);
+  const [triggerUploadImages, settriggerUploadImages] = useState('')
 
   const handleInputData = (name, value) => {
     setFromData((prev) => ({
@@ -38,8 +39,17 @@ function AddListing() {
       return; 
     }
     try {
-      await db.insert(listingsTable).values({ ...formData, sellersId: user.id , features: JSON.stringify(features)});
-      // navigate('/profile');
+      const result = await db.insert(listingsTable).values({ 
+      ...formData ,
+      sellersId: user.id , 
+      features: JSON.stringify(features)
+      }).returning({id: listingsTable.id});
+
+      if(result){
+        settriggerUploadImages(result[0]?.id)
+        navigate('/profile') ;
+      }
+      
     } catch (error) {
       console.error("Error inserting data:", error);
     }
@@ -93,7 +103,7 @@ function AddListing() {
               </div>
             </div>
             <div className="border-2 border-zinc-400 p-5">
-              <UploadImage images={images} setImages={setImages} />
+              <UploadImage images={images} setImages={setImages}/>
             </div>
             <div className="flex justify-end">
               <button

@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { storage } from '@/lib/firebase';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import {useState } from 'react';
 import { IoMdRemoveCircle } from 'react-icons/io';
 function UploadImage({setimages , images}) {
   const [uploadedImages, setUploadedImages] = useState([]);
@@ -15,6 +17,25 @@ function UploadImage({setimages , images}) {
      let result = uploadedImages.filter((item)=> item != image)
      setUploadedImages(result)
   };
+
+  function uploadTofirebase(){
+    uploadedImages.forEach((file)=>{
+      const filename = Date.now()+'.jpeg'
+      const storageRef = ref(storage , 'OwnaCar-images/' + filename)
+      const metaData= {
+        contentType : 'images/jpeg'
+      }
+      uploadBytes(storageRef , file , metaData ).then((snapShot)=>{
+        console.log('file uploaded')
+      }).then( ()=>{
+        getDownloadURL(storageRef).then(async(downloadUrl)=>{
+          console.log(downloadUrl);
+        })
+      })
+       
+    })
+  }
+
   return (
     <>
       <div className="mb-4 text-xl googlehandfontlb">Upload Image</div>
