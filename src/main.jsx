@@ -9,7 +9,7 @@ import { ClerkProvider } from '@clerk/clerk-react';
 // import { SignedOut, SignedIn} from '@clerk/clerk-react';
 import ProtectedRoute   from './components/securejsx/ProtectedRoute';
 import NotFound from './components/securejsx/NotFound';
-
+import SearchCars from './components/seachPage/SearchCars';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +29,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <TitleWrapper title="Add Listing - OwnaCar" component={<AddListing />} />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/search",
+    element: (
+      <ProtectedRoute>
+        <TitleWrapper title="ownacar" component={<SearchCars/>} />
       </ProtectedRoute>
     ),
   },

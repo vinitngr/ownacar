@@ -9,16 +9,21 @@ import { useState } from "react";
 import UploadImage from "./components/UploadImage";
 import { db } from "@/lib/db";
 import { listingsTable } from "../lib/schema";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 function AddListing() {
   const navigate = useNavigate()
   const { user } = useUser(); 
   const [formData, setFromData] = useState({}); 
   const [features, setFeatures] = useState({});
   const [images, setImages] = useState([]);
-  const [triggerUploadImages, settriggerUploadImages] = useState('')
+//const [triggerUploadImages, settriggerUploadImages] = useState('')
+ 
 
+  // const searchParams = useSearchParams()[0];
+  const [searchParams] = useSearchParams();
+  const mode = searchParams.get('mode');
+  
   const handleInputData = (name, value) => {
     setFromData((prev) => ({
       ...prev,
@@ -46,7 +51,7 @@ function AddListing() {
       }).returning({id: listingsTable.id});
 
       if(result){
-        settriggerUploadImages(result[0]?.id)
+        // settriggerUploadImages(result[0]?.id)
         navigate('/profile') ;
       }
       

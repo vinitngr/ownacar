@@ -1,8 +1,8 @@
-import { storage } from '@/lib/firebase';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+// import { storage } from '@/lib/firebase';
+// import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import {useState } from 'react';
 import { IoMdRemoveCircle } from 'react-icons/io';
-function UploadImage({setimages , images}) {
+function UploadImage({setimages}) {
   const [uploadedImages, setUploadedImages] = useState([]);
 
   const handleImageUpload = (event) => {
@@ -18,23 +18,23 @@ function UploadImage({setimages , images}) {
      setUploadedImages(result)
   };
 
-  function uploadTofirebase(){
-    uploadedImages.forEach((file)=>{
-      const filename = Date.now()+'.jpeg'
-      const storageRef = ref(storage , 'OwnaCar-images/' + filename)
-      const metaData= {
-        contentType : 'images/jpeg'
-      }
-      uploadBytes(storageRef , file , metaData ).then((snapShot)=>{
-        console.log('file uploaded')
-      }).then( ()=>{
-        getDownloadURL(storageRef).then(async(downloadUrl)=>{
-          console.log(downloadUrl);
-        })
-      })
+  // function uploadTofirebase(){
+  //   uploadedImages.forEach((file)=>{
+  //     const filename = Date.now()+'.jpeg'
+  //     const storageRef = ref(storage , 'OwnaCar-images/' + filename)
+  //     const metaData= {
+  //       contentType : 'images/jpeg'
+  //     }
+  //     uploadBytes(storageRef , file , metaData ).then(()=>{
+  //       console.log('file uploaded')
+  //     }).then( ()=>{
+  //       getDownloadURL(storageRef).then(async(downloadUrl)=>{
+  //         console.log(downloadUrl);
+  //       })
+  //     })
        
-    })
-  }
+  //   })
+  // }
 
   return (
     <>
