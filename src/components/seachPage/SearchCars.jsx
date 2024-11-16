@@ -3,25 +3,26 @@ import Search from "../Search";
 import { useEffect, useState } from "react";
 import { listingsTable } from "@/lib/schema";
 import { db } from "@/lib/db";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import Header from "../Header";
-import { useUser } from "@clerk/clerk-react";
-import { Link2Icon } from "lucide-react";
 import Skeleton from "../Skeleton";
+import Carscard from "../Carscard";
 function SearchCars() {
-  const [searchParams] = useSearchParams();
-  const category = searchParams.get('category');
-  const condition = searchParams.get('condition');
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {user} = useUser()
+  
+  const [searchParams] = useSearchParams();
+  
+  const category = searchParams.get('category');
+  const condition = searchParams.get('condition');
+  
   useEffect(() => {
-    const fetchListings = async () => {
+  const fetchListings = async () => {
       setLoading(true); 
       if (category || condition) {
         const query = db.select().from(listingsTable);
         if (category) {
-            query.where(eq(listingsTable.category, category.toLowerCase()));
+            query.where(sql`lower(${listingsTable.category}) = ${category.toLowerCase()}`);
         }
         if (condition) {
             query.where(eq(listingsTable.type, condition.toLowerCase()));
@@ -53,51 +54,8 @@ function SearchCars() {
 
           ))
         ) : listings.length > 0 ? (
-          listings.map((listing) => (
-            <div key={listing.id} className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
-              <div className="h-40 bg-gray-200"></div>
-              <div>
-                <p className="font-semibold text-md mb-1">{listing.listingTitle}</p>
-                <p className="line-clamp-2 text-sm  text-gray-600">{listing.listingDescription}</p>
-                <div className="flex justify-between mt-3 opacity-80 scale-90 ">
-                  <div className="flex flex-col items-center">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=41152&format=png&color=000000"
-                      className="size-10"
-                    ></img>
-                    <div className="text-sm text-center googlehandfont mt-1">{listing.mileage}
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <img
-                      src={
-                        listing.fuelType == "Electric"
-                          ? "https://img.icons8.com/?size=100&id=6IpUNvyPYBgm&format=png&color=000000"
-                          : "https://img.icons8.com/?size=100&id=3679&format=png&color=000000"
-                      }
-                      className="size-10"/>
-
-                    <div className="text-sm text-center googlehandfont mt-1">{listing.fuelType}
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <img
-                      src="https://img.icons8.com/?size=100&id=PwpEVWVt8I3F&format=png&color=000000"
-                      className="size-10 "
-                    ></img>
-                    <div className="text-sm text-center googlehandfont mt-1">{listing.year}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-between">
-              <button
-                    className="text-gray-600 px-2 rounded-full bg-gray-300 flex gap-3">
-                    Make a deal <Link2Icon/>
-                  </button>
-                <img src={user.imageUrl} className="w-6 h-6 rounded-full object-cover" alt="User Profile" />
-              </div>
-            </div>
+          listings.map((listing, index ) => (
+            <Carscard key={index} listing={listing}/>
           ))
         ) : (
           <p>No listings available.</p>

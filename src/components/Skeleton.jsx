@@ -9,6 +9,8 @@ function Skeleton() {
             <div className="h-3 bg-gray-300 rounded w-full mb-1"></div>  
             <div className="h-3 bg-gray-300 rounded w-5/6"></div>        
             </div>
+            <div className="h-16 bg-gray-300">
+            </div>
             <div className="flex justify-between items-center">
             <div className="h-6 w-24 bg-gray-300 rounded-full"></div>   
             <div className="w-6 h-6 bg-gray-300 rounded-full"></div> 
