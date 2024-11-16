@@ -62,7 +62,7 @@ function Index() {
           </Link>
         </div>
 
-        <div className="mt-5 grid xl:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 sm:gridcol2 gap-4">
+        <div className="mt-5 grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 sm:grid-col-2 gap-6 h-96">
           {loading ? (
             Array.from({ length: 6 }).map((index) => (
               <Skeleton key={index} />
@@ -106,14 +106,14 @@ function Index() {
                 </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-full">
                     <button
-                      className="text-red-600 px-2 rounded-full bg-red-300"
+                      className="text-red-300 w-1/2 rounded-full bg-red-100"
                       onClick={() => handleDelete(listing.id)}>
                       delete
                     </button>
                     <button
-                      className="text-blue-600 px-2 rounded-full bg-blue-300"
+                      className="text-blue-400 w-1/2 rounded-full bg-blue-100"
                       onClick={() => handleEdit(listing.id)}>
                       Edit
                     </button>

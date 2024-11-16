@@ -1,12 +1,12 @@
 import { Link2Icon } from "lucide-react"
 import { useUser } from "@clerk/clerk-react"
-function Carscard({listing}) {
+function    Carscard({listing}) {
 
     const {user} = useUser()
 
   return (
     <div>
-<div className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
+<div className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
               <div className="h-40 bg-gray-200"></div>
               <div>
                 <p className="font-semibold text-md mb-1">{listing.listingTitle}</p>

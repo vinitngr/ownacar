@@ -59,7 +59,7 @@ function SearchCars() {
       <div className="flex justify-center bg-[#DBEAFE] p-10 ">
       <Search />
       </div>
-      <div className="mt-5 grid xl:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 sm:gridcol2 gap-4 p-10">
+      <div className="mt-5 grid xl:grid-cols-4 lg:grid-cols-3  sm:grid-cols-2 gap-6 p-10">
         {loading ? (
           Array.from({ length: 6 }).map(index => (
             <Skeleton key={index}/> 
