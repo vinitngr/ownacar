@@ -5,13 +5,16 @@ import { listingsTable } from "@/lib/schema";
 import { db } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import Header from "../Header";
+import { useUser } from "@clerk/clerk-react";
+import { Link2Icon } from "lucide-react";
+import Skeleton from "../Skeleton";
 function SearchCars() {
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
   const condition = searchParams.get('condition');
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const {user} = useUser()
   useEffect(() => {
     const fetchListings = async () => {
       setLoading(true); 
@@ -45,18 +48,55 @@ function SearchCars() {
       <div className="text-center">Search Type= {category}</div>
       <div className="mt-5 grid xl:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 sm:gridcol2 gap-4 p-10">
         {loading ? (
-          Array.from({ length: 6 }).map((_, index) => (
-            <div key={index} className="p-3 border-b border-gray-200 border-2 animate-pulse">
-              <div className="h-40 bg-gray-300 rounded w-full mb-2"></div>
-              <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
-              <div className="h-4 bg-gray-300 rounded w-1/2"></div>
-            </div>
+          Array.from({ length: 6 }).map(index => (
+            <Skeleton key={index}/> 
+
           ))
         ) : listings.length > 0 ? (
           listings.map((listing) => (
-            <div key={listing.id} className="p-3 border-b border-gray-200 border-2">
-              <p>{listing.listingTitle}</p>
-              <p>{listing.listingDescription}</p>
+            <div key={listing.id} className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
+              <div className="h-40 bg-gray-200"></div>
+              <div>
+                <p className="font-semibold text-md mb-1">{listing.listingTitle}</p>
+                <p className="line-clamp-2 text-sm  text-gray-600">{listing.listingDescription}</p>
+                <div className="flex justify-between mt-3 opacity-80 scale-90 ">
+                  <div className="flex flex-col items-center">
+                    <img
+                      src="https://img.icons8.com/?size=100&id=41152&format=png&color=000000"
+                      className="size-10"
+                    ></img>
+                    <div className="text-sm text-center googlehandfont mt-1">{listing.mileage}
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <img
+                      src={
+                        listing.fuelType == "Electric"
+                          ? "https://img.icons8.com/?size=100&id=6IpUNvyPYBgm&format=png&color=000000"
+                          : "https://img.icons8.com/?size=100&id=3679&format=png&color=000000"
+                      }
+                      className="size-10"/>
+
+                    <div className="text-sm text-center googlehandfont mt-1">{listing.fuelType}
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <img
+                      src="https://img.icons8.com/?size=100&id=PwpEVWVt8I3F&format=png&color=000000"
+                      className="size-10 "
+                    ></img>
+                    <div className="text-sm text-center googlehandfont mt-1">{listing.year}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-between">
+              <button
+                    className="text-gray-600 px-2 rounded-full bg-gray-300 flex gap-3">
+                    Make a deal <Link2Icon/>
+                  </button>
+                <img src={user.imageUrl} className="w-6 h-6 rounded-full object-cover" alt="User Profile" />
+              </div>
             </div>
           ))
         ) : (

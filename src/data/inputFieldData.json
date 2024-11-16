@@ -126,7 +126,7 @@
       "name": "fuelType",
       "fieldType": "dropdown",
       "column": 2,
-      "options": ["automated", "manual "],
+      "options": ["Gasoline", "Electric"],
       "icon": "fuelType-icon",
       "required": true
     },
