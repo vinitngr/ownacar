@@ -29,7 +29,6 @@ function SearchCars() {
       if (category || condition || maker || baseprice || upperprice) {
         const query = db.select().from(listingsTable);
         if (category) {
-            condition.push()
             query.where(sql`lower(${listingsTable.category}) = ${category.toLowerCase()}`);
         }
         if (condition) {
