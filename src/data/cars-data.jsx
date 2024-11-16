@@ -7,15 +7,15 @@ const carMakers = [
 ]
 
 const pricing = [
-    { id: 1, range: '20,000$-40,000$' },
-    { id: 2, range: '35,000$-50,000$' },
-    { id: 3, range: '48,000$-60,000$' },
-    { id: 4, range: '50,000$-70,000$' },
-    { id: 5, range: '65,000$-80,000$' },
+    { id: 1, range: '20000$-40000$' },
+    { id: 2, range: '35000$-50000$' },
+    { id: 3, range: '48000$-60000$' },
+    { id: 4, range: '50000$-70000$' },
+    { id: 5, range: '65000$-80000$' },
 ]
 const type = [
-    { id: 1, type: 'New' },
-    { id: 2, type: 'Old' },
+    { id: 1, type: 'Used' },
+    { id: 2, type: 'New' },
 ]
 
 // eslint-disable-next-line react-refresh/only-export-components

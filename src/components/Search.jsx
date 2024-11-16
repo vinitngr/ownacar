@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     Select,
     SelectContent,
@@ -9,11 +9,29 @@ import {
 } from "@/components/ui/select";
 import Data from "../data/cars-data";
 import { IoIosSearch } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+
 function Search() {
+    const [condition, setCondition] = useState();
+    const [maker, setMaker] = useState();
+    const [price, setPrice] = useState();
+
+    const navigate = useNavigate();
+
+    const handleSearch = () => {
+        const params = new URLSearchParams();
+
+        if (condition) params.append("condition", condition);
+        if (maker) params.append("maker", maker);
+        if (price) params.append("price", price);
+
+        navigate(`/search?${params.toString()}`);
+    };
+
     return (
-        <div className="flex flex-col md:flex-row md:w-[80%] xl:w-[60%] gap-4 p-2 shadow-md bg-white md:rounded-full items-center w-fit rounded-xl  mt-2">
-            <Select>
-                <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow ">
+        <div className="flex flex-col md:flex-row md:w-[80%] xl:w-[60%] gap-4 p-2 shadow-md bg-white md:rounded-full items-center w-fit rounded-xl mt-2">
+            <Select onValueChange={value => setCondition(value)}>
+                <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow">
                     <SelectValue placeholder="Cars" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-none">
@@ -24,11 +42,11 @@ function Search() {
                     ))}
                 </SelectContent>
             </Select>
-            <Select>
-                <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow ">
+            
+            <Select onValueChange={value => setMaker(value)}>
+                <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow">
                     <SelectValue placeholder="Car-Maker" />
                 </SelectTrigger>
-
                 <SelectContent className="bg-white border-none">
                     {Data.carMakers.map((carMaker) => (
                         <SelectItem key={carMaker.id} value={carMaker.name}>
@@ -37,7 +55,8 @@ function Search() {
                     ))}
                 </SelectContent>
             </Select>
-            <Select>
+
+            <Select onValueChange={value => setPrice(value)}>
                 <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow">
                     <SelectValue placeholder="Price Range" />
                 </SelectTrigger>
@@ -50,7 +69,10 @@ function Search() {
                 </SelectContent>
             </Select>
 
-            <IoIosSearch className="md:size-8 w-full h-6     bg-blue-600 text-white rounded-full hover:scale-125 cursor-pointer transition-all duration-150 p-1 " />
+            <IoIosSearch
+                onClick={handleSearch}
+                className="md:size-8 w-full h-6 bg-blue-600 text-white rounded-full hover:scale-125 cursor-pointer transition-all duration-150 p-1"
+            />
         </div>
     );
 }

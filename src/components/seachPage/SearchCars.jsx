@@ -3,7 +3,7 @@ import Search from "../Search";
 import { useEffect, useState } from "react";
 import { listingsTable } from "@/lib/schema";
 import { db } from "@/lib/db";
-import { eq, sql } from "drizzle-orm";
+import { between, sql } from "drizzle-orm";
 import Header from "../Header";
 import Skeleton from "../Skeleton";
 import Carscard from "../Carscard";
@@ -15,19 +15,33 @@ function SearchCars() {
   
   const category = searchParams.get('category');
   const condition = searchParams.get('condition');
-  
+  const maker = searchParams.get('maker');
+  const price = searchParams.get('price');
+  const baseprice= Number(price?.split('$')[0])
+  const upperprice= Number(price?.split('$-')[1].split('$')[0])
+
+  console.log(category , maker , baseprice , upperprice , typeof baseprice  , condition);
   useEffect(() => {
   const fetchListings = async () => {
       setLoading(true); 
-      if (category || condition) {
+
+
+      if (category || condition || maker || baseprice || upperprice) {
         const query = db.select().from(listingsTable);
         if (category) {
+            condition.push()
             query.where(sql`lower(${listingsTable.category}) = ${category.toLowerCase()}`);
         }
         if (condition) {
-            query.where(eq(listingsTable.type, condition.toLowerCase()));
+            query.where(sql`lower(${listingsTable.condition}) = ${condition.toLowerCase()}`);
         }
-    
+        if (maker) {
+          query.where(sql`lower(${listingsTable.maker}) = ${maker.toLowerCase()}`);
+        }
+        if (baseprice && upperprice) {
+            query.where(between(listingsTable.sellingPrice , baseprice , upperprice));
+        }
+
         const result = await query; 
         setListings(result);
     }else{
@@ -38,7 +52,7 @@ function SearchCars() {
     };
 
     fetchListings();
-  }, [category, condition]); 
+  }, [category, condition , maker , baseprice , upperprice]); 
 
   return (
     <div>
@@ -46,7 +60,6 @@ function SearchCars() {
       <div className="flex justify-center bg-[#DBEAFE] p-10 ">
       <Search />
       </div>
-      <div className="text-center">Search Type= {category}</div>
       <div className="mt-5 grid xl:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 sm:gridcol2 gap-4 p-10">
         {loading ? (
           Array.from({ length: 6 }).map(index => (

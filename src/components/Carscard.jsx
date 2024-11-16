@@ -17,7 +17,7 @@ function Carscard({listing}) {
                       src="https://img.icons8.com/?size=100&id=41152&format=png&color=000000"
                       className="size-10"
                     ></img>
-                    <div className="text-sm text-center googlehandfont mt-1">{listing.mileage}
+                    <div className="text-sm text-center googlehandfont mt-1">{listing.mileage} 
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
