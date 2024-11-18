@@ -1,8 +1,43 @@
-# React + Vite
+# E-commerce Car Selling Website 🚗
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An e-commerce platform for car sales built with modern web technologies. This website allows users to browse, filter, and purchase cars, with user-friendly features like sorting, filtering, authentication, and CRUD operations.
 
-Currently, two official plugins are available:
+## Features 🛠️
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Sorting & Filtering**: Refine car listings based on categories like price, condition, and brand.
+- **CRUD Operations**: Full support for creating, updating, and deleting listings.
+- **User Authentication**: Sign-in and Sign-up functionality powered by Firebase.
+- **Responsive UI**: Styled with ShadCN and HyperUI for a sleek and accessible interface.
+
+---
+
+## Tech Stack 📚
+
+### Frontend
+- **React** with **Vite**: For a fast, modern frontend development experience.
+- **ShadCN** and **HyperUI**: Used for a responsive and aesthetically pleasing UI.
+
+### Backend
+- **Drizzle ORM**: A type-safe ORM used for efficient querying and data management.
+- **Neon Database**: Hosted PostgreSQL with serverless support for scalable data handling.
+
+### Services
+- **Firebase**: Integrated for user authentication (sign-in/sign-up) and secure management of user sessions.
+
+---
+
+## Setup 🛠️
+
+### Prerequisites
+
+- Node.js and npm
+- Neon database setup with appropriate credentials
+- Firebase project with authentication enabled
+
+### Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/yourusername/your-repo-name.git
+   cd your-repo-name

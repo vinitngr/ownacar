@@ -9,7 +9,7 @@ import { ClerkProvider } from '@clerk/clerk-react';
 // import { SignedOut, SignedIn} from '@clerk/clerk-react';
 import ProtectedRoute   from './components/securejsx/ProtectedRoute';
 import NotFound from './components/securejsx/NotFound';
-import SearchCars from './components/seachPage/SearchCars';
+import SearchCars from './components/searchPage/SearchCars';
 
 const router = createBrowserRouter([
   {

@@ -3,7 +3,7 @@ import Search from "../Search";
 import { useEffect, useState } from "react";
 import { listingsTable } from "@/lib/schema";
 import { db } from "@/lib/db";
-import { between, sql } from "drizzle-orm";
+import { and, between, sql } from "drizzle-orm";
 import Header from "../Header";
 import Skeleton from "../Skeleton";
 import Carscard from "../Carscard";
@@ -22,27 +22,18 @@ function SearchCars() {
 
   // console.log(category , maker , baseprice , upperprice , typeof baseprice  , condition);
   useEffect(() => {
-  const fetchListings = async () => {
-      setLoading(true); 
-
-
-      if (category || condition || maker || baseprice || upperprice) {
-        const query = db.select().from(listingsTable);
-        if (category) {
-            query.where(sql`lower(${listingsTable.category}) = ${category.toLowerCase()}`);
-        }
-        if (condition) {
-            query.where(sql`lower(${listingsTable.condition}) = ${condition.toLowerCase()}`);
-        }
-        if (maker) {
-          query.where(sql`lower(${listingsTable.maker}) = ${maker.toLowerCase()}`);
-        }
-        if (baseprice && upperprice) {
-            query.where(between(listingsTable.sellingPrice , baseprice , upperprice));
-        }
-
-        const result = await query; 
-        setListings(result);
+const fetchListings = async () => {
+    setLoading(true); 
+    if (category || condition || maker || baseprice || upperprice) {
+      const result = await db.select().from(listingsTable)
+      .where(
+        and(
+          category ? sql`lower(${listingsTable.category}) = ${category.toLowerCase()}` : sql`true`,
+          condition ? sql`lower(${listingsTable.condition}) = ${condition.toLowerCase()}` : sql`true`,
+          maker ? sql`lower(${listingsTable.maker}) = ${maker.toLowerCase()}` : sql`true`,
+          baseprice && upperprice ? between(listingsTable.sellingPrice, baseprice, upperprice) : sql`true`
+        ))
+      setListings(result);
     }else{
         const result = await db.select().from(listingsTable).limit(5);
         setListings(result);

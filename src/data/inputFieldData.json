@@ -47,7 +47,7 @@
         "column": 2,
         "icon": "condition-icon",
         "required": true,
-        "options": ["New", "Used - Like New", "Used - Good", "Used - Fair"]
+        "options": ["New", "Used - Like New", "Used - Good", "Used - Fair" , "Old"]
       },
       {
         "label": "Type",
