@@ -3,6 +3,7 @@ function inputField({ item, handleInputData }) {
   return (
     <div>
         <input
+        autoComplete="off"
           onChange={(e) => handleInputData(item.name, e.target.value)}
           name={item.name}
           placeholder={item.label}

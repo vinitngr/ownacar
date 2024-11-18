@@ -75,7 +75,7 @@ function AddListing() {
                   <div key={index}>
                     <label>
                       {item.label}
-                      {item.required ? <label className="text-red-500 ml-1">*</label> : ""}
+                      {item.required ? <span className="text-red-500 ml-1">*</span> : ""}
                     </label>
                     {item.fieldType === "text" || item.fieldType === "number" ? (
                       <InputField item={item} handleInputData={handleInputData} />

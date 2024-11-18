@@ -115,13 +115,6 @@
         "required": true
       },
       {
-        "label": "Offer Type",
-        "name": "offerType",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "offer-icon"
-      },
-      {
         "label": "fuel type",
         "name": "fuelType",
         "fieldType": "dropdown",
@@ -161,6 +154,13 @@
         "icon": "transmission-icon",
         "options": ["Automatic", "Manual", "CVT", "Semi-Automatic"],
         "required": true
+      },
+      {
+        "label": "placeholder image",
+        "name": "imageUrl",
+        "fieldType": "text",
+        "column": 2,
+        "icon": "link-icon" 
       },
       {
         "label": "Listing Description",

@@ -10,6 +10,7 @@ import { ClerkProvider } from '@clerk/clerk-react';
 import ProtectedRoute   from './components/securejsx/ProtectedRoute';
 import NotFound from './components/securejsx/NotFound';
 import SearchCars from './components/searchPage/SearchCars';
+import Cardetail from './cars-details/Cardetail';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
     path: "/search",
     element: (
         <TitleWrapper title="ownacar" component={<SearchCars/>} />
+    ),
+  },
+  {
+    path: "/car/:id",
+    element: (
+        <TitleWrapper title="ownacar" component={<Cardetail/>} />
     ),
   },
   {

@@ -70,7 +70,10 @@ function Index() {
           ) : listings.length > 0 ? (
             listings.map((listing) => (
               <div key={listing.id} className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
-                <div className="h-40 bg-gray-200"></div>
+                <div className="h-40 bg-gray-200 overflow-hidden">
+                  <img src={listing.imageUrl} className="object-cover w-full h-full" />
+                </div>
+
                 <div>
                   <p className="font-semibold text-md mb-2">{listing.listingTitle}</p>
                   <p className="line-clamp-2 text-sm  text-gray-600">{listing.listingDescription}</p>

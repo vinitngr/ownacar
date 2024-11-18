@@ -1,0 +1,2 @@
+ALTER TABLE "carImages" ALTER COLUMN "imageUrl" DROP NOT NULL;--> statement-breakpoint
+ALTER TABLE "listings" ADD COLUMN "imageUrl" varchar DEFAULT 'https://motozitelive.blob.core.windows.net/motozite-live/newcars_images/1670408218No-Image.jpg';

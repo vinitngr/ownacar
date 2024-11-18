@@ -8,6 +8,20 @@
       "when": 1730553917532,
       "tag": "0000_slimy_goliath",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1731952998333,
+      "tag": "0001_wild_captain_midlands",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1731953086307,
+      "tag": "0002_skinny_mystique",
+      "breakpoints": true
     }
   ]
 }
