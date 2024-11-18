@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import Data from '../data/cars-data'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 function Category() {
     const navigate = useNavigate();

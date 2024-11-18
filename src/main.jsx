@@ -35,9 +35,7 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: (
-      <ProtectedRoute>
         <TitleWrapper title="ownacar" component={<SearchCars/>} />
-      </ProtectedRoute>
     ),
   },
   {

@@ -19,7 +19,6 @@ function AddListing() {
   const [images, setImages] = useState([]);
 //const [triggerUploadImages, settriggerUploadImages] = useState('')
  
-
   // const searchParams = useSearchParams()[0];
   const [searchParams] = useSearchParams();
   const mode = searchParams.get('mode');

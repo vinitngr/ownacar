@@ -10,13 +10,16 @@ import {
 import Data from "../data/cars-data";
 import { IoIosSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import inputFieldData from "../data/inputFieldData.json";
 
 function Search() {
     const [condition, setCondition] = useState();
     const [maker, setMaker] = useState();
     const [price, setPrice] = useState();
-
     const navigate = useNavigate();
+
+    const makers = inputFieldData.inputFields.find(field => field.name === "maker")?.options
+    const conditions = inputFieldData.inputFields.find(field => field.name === "condition")?.options
 
     const handleSearch = () => {
         const params = new URLSearchParams();
@@ -25,19 +28,24 @@ function Search() {
         if (maker) params.append("maker", maker);
         if (price) params.append("price", price);
 
-        navigate(`/search?${params.toString()}`);
+        
+        if (params.toString()) {
+            navigate(`/search?${params.toString()}`); 
+          } else {
+            document.querySelector(".addborder").classList.add("border-2", "border-blue-400");
+          }
     };
 
     return (
-        <div className="flex flex-col md:flex-row md:w-[80%] xl:w-[60%] gap-4 p-2 shadow-md bg-white md:rounded-full items-center w-fit rounded-xl mt-2">
+        <div className="addborder flex flex-col md:flex-row md:w-[80%] xl:w-[60%] gap-4 p-2 shadow-md bg-white md:rounded-full items-center w-fit rounded-xl mt-2">
             <Select onValueChange={value => setCondition(value)}>
                 <SelectTrigger className="w-[180px] border-none shadow-none hover:bg-zinc-100 rounded-full grow">
                     <SelectValue placeholder="Cars" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-none">
-                    {Data.type.map((car, index) => (
-                        <SelectItem key={index} value={car.type}>
-                            {car.type}
+                    {conditions.map((car, index) => (
+                        <SelectItem key={index} value={car}>
+                            {car}
                         </SelectItem>
                     ))}
                 </SelectContent>
@@ -48,9 +56,9 @@ function Search() {
                     <SelectValue placeholder="Car-Maker" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-none">
-                    {Data.carMakers.map((carMaker) => (
-                        <SelectItem key={carMaker.id} value={carMaker.name}>
-                            {carMaker.name}
+                    {makers.map((carMaker, index) => (
+                        <SelectItem key={index} value={carMaker}>
+                            {carMaker}
                         </SelectItem>
                     ))}
                 </SelectContent>

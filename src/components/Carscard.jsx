@@ -1,9 +1,5 @@
 import { Link2Icon } from "lucide-react"
-import { useUser } from "@clerk/clerk-react"
-function    Carscard({listing}) {
-
-    const {user} = useUser()
-
+function Carscard({listing}) {
   return (
     <div>
 <div className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
@@ -47,7 +43,7 @@ function    Carscard({listing}) {
                     className="text-gray-600 px-2 rounded-full bg-gray-300 flex gap-3">
                     Make a deal <Link2Icon/>
                   </button>
-                <img src={user.imageUrl} className="w-6 h-6 rounded-full object-cover" alt="User Profile" />
+                <img src='d' className="w-6 h-6 rounded-full object-cover" alt="User Profile" />
               </div>
             </div>
 

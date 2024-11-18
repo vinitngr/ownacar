@@ -20,7 +20,7 @@ function SearchCars() {
   const baseprice= Number(price?.split('$')[0])
   const upperprice= Number(price?.split('$-')[1].split('$')[0])
 
-  console.log(category , maker , baseprice , upperprice , typeof baseprice  , condition);
+  // console.log(category , maker , baseprice , upperprice , typeof baseprice  , condition);
   useEffect(() => {
   const fetchListings = async () => {
       setLoading(true); 
@@ -44,7 +44,7 @@ function SearchCars() {
         const result = await query; 
         setListings(result);
     }else{
-        const result = await db.select().from(listingsTable);
+        const result = await db.select().from(listingsTable).limit(5);
         setListings(result);
     }
       setLoading(false); 

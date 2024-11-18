@@ -1,22 +1,13 @@
-const carMakers = [
-    { id: 1, name: 'Audi' },
-    { id: 2, name: 'BMW' },
-    { id: 3, name: 'Mercedes' },
-    { id: 4, name: 'Toyota' },
-    { id: 5, name: 'Ford' },
-]
 
 const pricing = [
-    { id: 1, range: '20000$-40000$' },
-    { id: 2, range: '35000$-50000$' },
-    { id: 3, range: '48000$-60000$' },
-    { id: 4, range: '50000$-70000$' },
-    { id: 5, range: '65000$-80000$' },
+    { id: 1, range: '1000$-25000$' },
+    { id: 2, range: '20000$-40000$' },
+    { id: 3, range: '35000$-50000$' },
+    { id: 4, range: '48000$-60000$' },
+    { id: 5, range: '50000$-70000$' },
+    { id: 6, range: '65000$-80000$' },
 ]
-const type = [
-    { id: 1, type: 'Used' },
-    { id: 2, type: 'New' },
-]
+
 
 // eslint-disable-next-line react-refresh/only-export-components
 const Categories = [
@@ -59,4 +50,4 @@ const Categories = [
     },
 ]
 
-export default { type , carMakers, pricing , Categories }
+export default {pricing , Categories }

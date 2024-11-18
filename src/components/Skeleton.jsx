@@ -11,10 +11,8 @@ function Skeleton() {
             </div>
             <div className="h-16 bg-gray-300">
             </div>
-            <div className="flex justify-between items-center">
-            <div className="h-6 w-24 bg-gray-300 rounded-full"></div>   
-            <div className="w-6 h-6 bg-gray-300 rounded-full"></div> 
-            </div>
+            <div className="w-full h-6 bg-gray-300 rounded-full"></div>   
+     
         </div>
     </>
   )
