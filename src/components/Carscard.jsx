@@ -6,7 +6,7 @@ function Carscard({listing}) {
               <div className="h-40 bg-gray-200"></div>
               <div>
                 <p className="font-semibold text-md mb-1">{listing.listingTitle}</p>
-                <p className="line-clamp-2 text-sm  text-gray-600">{listing.listingDescription}</p>
+                <p className="line-clamp-2 text-lg text-gray-600">${listing.sellingPrice}</p>
                 <div className="flex justify-between mt-3 opacity-80 scale-90 ">
                   <div className="flex flex-col items-center">
                     <img
