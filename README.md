@@ -6,7 +6,7 @@ An e-commerce platform for car sales built with modern web technologies. This we
 
 - **Sorting & Filtering**: Refine car listings based on categories like price, condition, and brand.
 - **CRUD Operations**: Full support for creating, updating, and deleting listings.
-- **User Authentication**: Sign-in and Sign-up functionality powered by Firebase.
+- **User Authentication**: Sign-in and Sign-up functionality powered by client.
 - **Responsive UI**: Styled with ShadCN and HyperUI for a sleek and accessible interface.
 
 ---
@@ -22,7 +22,7 @@ An e-commerce platform for car sales built with modern web technologies. This we
 - **Neon Database**: Hosted PostgreSQL with serverless support for scalable data handling.
 
 ### Services
-- **Firebase**: Integrated for user authentication (sign-in/sign-up) and secure management of user sessions.
+- **Firebase**: storage service to store images
 
 ---
 
