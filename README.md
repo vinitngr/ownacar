@@ -39,5 +39,5 @@ An e-commerce platform for car sales built with modern web technologies. This we
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/vinitngr/reactEcom-ownAcar.git
    cd your-repo-name
