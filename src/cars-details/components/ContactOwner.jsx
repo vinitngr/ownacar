@@ -1,8 +1,6 @@
-import { useUser } from "@clerk/clerk-react"
 
 function ContactOwner({userId}) {
-console.log(userId)
-const user= useUser()
+
   return (
     <>
       <div className=" border-2 p-6">

@@ -7,7 +7,7 @@ import { listingsTable } from "@/lib/schema"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { eq } from "drizzle-orm"
-import Cardetails from "./components/Cardetails"
+import Cardetails from "./components/Carspecifications"
 import Imgdescription from "./components/Img-description"
 
 import Tags from "./components/Tags"
@@ -51,10 +51,6 @@ function Cardetail() {
                   <ContactOwner userId={listingdetail[0].sellersId} />
                 </div>
               </div>
-
-
-
-
             </>
           ) : (
             <Cardetailskeleton/>
