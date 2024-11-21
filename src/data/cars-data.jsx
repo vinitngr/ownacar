@@ -50,4 +50,20 @@ const Categories = [
     },
 ]
 
-export default {pricing , Categories }
+const carSpecifications = [
+    { name: "category", label: "Category" },
+    { name: "condition", label: "Condition" },
+    { name: "maker", label: "Maker" },
+    { name: "year", label: "Year" },
+    { name: "mileage", label: "Mileage" },
+    { name: "type", label: "Type" },
+    { name: "driveType", label: "Drive Type" },
+    { name: "cylinder", label: "Cylinder" },
+    { name: "color", label: "Color" },
+    { name: "fuelType", label: "Fuel Type" },
+    { name: "vin", label: "VIN" },
+    { name: "engineSize", label: "Engine Size" },
+    { name: "transmission", label: "Transmission" },
+];
+
+export default {pricing , Categories , carSpecifications}

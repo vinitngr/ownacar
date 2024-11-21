@@ -11,10 +11,10 @@ import Cardetails from "./components/Cardetails"
 import Imgdescription from "./components/Img-description"
 
 import Tags from "./components/Tags"
+import Cardetailskeleton from "./components/Skeleton"
 function Cardetail() {
   const [listingdetail, setlistingdetail] = useState();
   const { id } = useParams();
-
 
   useEffect(() => {
     async function getcardetails() {
@@ -48,12 +48,16 @@ function Cardetail() {
                 <div>
                   <CarPrice price={listingdetail[0].sellingPrice} />
                   <Cardetails details={listingdetail[0]} />
-                  <ContactOwner />
+                  <ContactOwner userId={listingdetail[0].sellersId} />
                 </div>
               </div>
+
+
+
+
             </>
           ) : (
-            <div>Loading...</div>
+            <Cardetailskeleton/>
           )}
         </div>
       </div>

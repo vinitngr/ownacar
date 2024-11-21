@@ -13,7 +13,7 @@
         "name": "tagline",
         "fieldType": "text",
         "column": 2,
-        "icon": "tagline-icon"
+        "icon": "tagline-icon"  
       },
       {
         "label": "Original Price",
