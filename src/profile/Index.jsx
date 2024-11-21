@@ -52,7 +52,9 @@ function Index() {
   return (
     <div>
       <Header />
-      <div className="p-10">
+      <div 
+  
+      className="p-10">
         <div className="flex justify-between">
           <div className="text-3xl googlehandfont font-bold">My Listings</div>
           <Link to="/addListing">
@@ -69,7 +71,10 @@ function Index() {
             ))
           ) : listings.length > 0 ? (
             listings.map((listing) => (
-              <div key={listing.id} className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
+              <div 
+              key={listing.id} 
+              onClick={()=> navigate(`/car/${listing.id}`)}
+              className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
                 <div className="h-40 bg-gray-200 overflow-hidden">
                   <img src={listing.imageUrl} className="object-cover w-full h-full" />
                 </div>

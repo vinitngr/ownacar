@@ -1,6 +1,7 @@
 import data from '../../data/cars-data'
 function Cardetails({ details }) {
-
+  console.log(details);
+  
   return (
     <>
       <div className="border-2 rounded-lg p-6 my-3">
@@ -8,8 +9,8 @@ function Cardetails({ details }) {
         {
           data.carSpecifications.map((s , index)=>(
             <div key={index} className='flex justify-between'>
-              <div className='font-normal my-2'>{s.name}</div>
-              <div className='font-normal my-2'>{details[s.name]}</div>
+              <div className='font-normal my-2'>{s.label}</div>
+              <div className='font-normal my-2'>{details[s.name] || '-'}</div>
             </div>
           ))
         }
