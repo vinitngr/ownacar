@@ -6,7 +6,7 @@ function Carscard({listing}) {
     <div>
       <div
       onClick={()=> navigate(`/car/${listing.id}`)}
-      className="p-1 pb-3 border-b rounded-lg border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
+      className="p-3 border-b rounded-lg border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
           <img className="rounded-lg" src={listing.imageUrl}/>
           <div>
             <p className="font-semibold text-md mb-1">{listing.listingTitle}</p>
