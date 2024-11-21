@@ -8,13 +8,13 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { eq } from "drizzle-orm"
 import Cardetails from "./components/Cardetails"
-import { SlCalender } from "react-icons/sl";
+import Imgdescription from "./components/Img-description"
+
+import Tags from "./components/Tags"
 function Cardetail() {
   const [listingdetail, setlistingdetail] = useState();
   const { id } = useParams();
-  console.log(id);
 
-  const tags='flex justify-center items-center gap-1 px-2 font-semibold bg-blue-100 text-blue-500 text-sm rounded-full cursor-pointer'
 
   useEffect(() => {
     async function getcardetails() {
@@ -31,31 +31,19 @@ function Cardetail() {
 
     getcardetails();
   }, [id]); 
-console.log(listingdetail)
     return (
       <div>
         <Header />
-        <div className="p-10 googlehandfont">
+        <div className="px-10 py-4 googlehandfont">
           {listingdetail && listingdetail.length > 0 ? (
             <>
               <div className="text-4xl font-semibold py-2">{listingdetail[0].listingTitle}</div>
               <div className="mb-2 font-light">{listingdetail[0].tagline}</div>
-              <div className="flex gap-2 mb-4">
-                <div className={tags}> <SlCalender />{listingdetail[0].year}</div>
-                <div className={tags}>{listingdetail[0].mileage} miles</div>
-                <div className={tags}>{listingdetail[0].transmission}</div>
-                <div className={tags}>{listingdetail[0].fuelType}</div>
-              </div>
+              <Tags listing={listingdetail[0]}/>
               <div className="grid grid-cols-3 gap-10">
                 <div className="grid col-span-2">
-                  <div className="rounded overflow-hidden">
-                    <img src={`https://picsum.photos/500/300?random=10`} className="w-full h-full object-cover" alt="car pic" />
-                  </div>
-                  <div className="p-3 border-2 my-4 rounded">
-                    <div className="text-xl mb-1 font-semibold">Description</div>
-                    <p className="text-sm font-light my-2">{listingdetail[0].listingDescription}</p>
-                  </div>
-                  <Features />
+                  <Imgdescription listing={listingdetail[0]}/>
+                  <Features features={listingdetail[0].features}/>
                 </div>
                 <div>
                   <CarPrice price={listingdetail[0].sellingPrice} />
