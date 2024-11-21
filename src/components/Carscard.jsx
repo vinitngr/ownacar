@@ -1,8 +1,12 @@
 import { Link2Icon } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 function Carscard({listing}) {
+  const navigate = useNavigate()
   return (
     <div>
-<div className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
+      <div
+     onClick={()=> navigate(`/car/${listing.id}`)}
+     className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
               <div className="h-40 bg-gray-200"></div>
               <div>
                 <p className="font-semibold text-md mb-1">{listing.listingTitle}</p>
