@@ -4,7 +4,7 @@ function Cardetails({ details }) {
   
   return (
     <>
-      <div className="border-2 rounded-lg p-6 my-3">
+      <div className="border-2 rounded-lg p-6 order-1">
         <h2 className="font-semibold text-xl">Car Details</h2>
         {
           data.carSpecifications.map((s , index)=>(

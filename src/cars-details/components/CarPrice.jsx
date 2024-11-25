@@ -1,7 +1,8 @@
 import { MdLocalOffer } from "react-icons/md";
 function CarPrice({Sprice , Oprice}) {
   return (
-    <div className="p-6 border-2 rounded-lg">
+    <div className="p-6 border-2 rounded-lg h-fit order-2 lg:order-1">
+
       <p className="font-thin">our Price</p>
       <h1 className="text-4xl font-normal mb-2">${Sprice}</h1>
       <p className="text-xs text-gray-400 font-extralight">original price : ${Oprice}</p>

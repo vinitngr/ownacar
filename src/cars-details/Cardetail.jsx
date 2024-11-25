@@ -36,18 +36,18 @@ function Cardetail() {
     return (
       <div>
         <Header />
-        <div className="px-10 py-4 googlehandfont">
+        <div className="px-2 lg:px-10 py-4 googlehandfont">
           {listingdetail && listingdetail.length > 0 ? (
             <>
               <div className="text-4xl font-semibold py-2">{listingdetail[0].listingTitle}</div>
               <div className="mb-2 font-light">{listingdetail[0].tagline}</div>
               <Tags listing={listingdetail[0]}/>
-              <div className="grid grid-cols-3 gap-10">
-                <div className="grid col-span-2">
+              <div className="grid grid-cols-1 lg:grid-cols-3  gap-4 lg:gap-10">
+                <div className="grid lg:col-span-2">
                   <Imgdescription listing={listingdetail[0]}/>
                   <Features features={listingdetail[0].features}/>
                 </div>
-                <div>
+                <div className="grid gap-4">
                   <CarPrice Sprice={listingdetail[0].sellingPrice} Oprice={listingdetail[0].originalPrice} />
                   <Cardetails details={listingdetail[0]} />
                   <ContactOwner userId={listingdetail[0].sellersId} />

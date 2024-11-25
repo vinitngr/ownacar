@@ -1,9 +1,9 @@
 
 function ContactOwner({userId}) {
-
+  console.log(userId);
   return (
     <>
-      <div className=" border-2 p-6">
+      <div className=" border-2 p-6 lg:order-3 order-3 rounded-lg" >
         <h2 className="font-semibold text-xl mb-3">Seller</h2>
         <div className="flex gap-6 items-center">
           <div className="size-20 rounded-full bg-red-50"></div>

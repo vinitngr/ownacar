@@ -9,11 +9,13 @@ function header() {
   return (
     <div className="flex justify-between items-center p-3 ring-1 ring-black m-3 rounded-xl">
       <div className="flex items-center gap-2 googlehandfont ">
-        <img src="/logo.svg" />
         <Link to="/">
+        <div className="flex items-center gap-2">
+          <img src="/logo.svg" />
           <p className="text-xl font-bold mb-1 sm:block hidden ">
             OwnaCar
           </p>
+        </div>
         </Link>
       </div>
       <div className="md:flex gap-12 font-bold googlehandfont md:visible hidden
