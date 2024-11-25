@@ -32,12 +32,12 @@ An e-commerce platform for car sales built with modern web technologies. This we
 
 - Node.js and npm
 - Neon database setup with appropriate credentials
-- Firebase project with authentication enabled
+- Firebase and client setup 
 
 ### Installation
 
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/vinitngr/reactEcom-ownAcar.git
    cd your-repo-name
