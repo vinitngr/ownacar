@@ -23,7 +23,7 @@ export const listingsTable = pgTable("listings", {
   transmission: varchar({ length: 255 }).notNull(),
   listingDescription: text().notNull(),
   features : json(),
-  imageUrl : varchar('imageUrl').default('https://motozitelive.blob.core.windows.net/motozite-live/newcars_images/1670408218No-Image.jpg')
+  imageUrl : varchar('imageUrl').default('https://motozitelive.blob.core.windows.net/motozite-live/newcars_images/1670408218No-Image.jpg'),
 });
 
 

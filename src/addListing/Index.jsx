@@ -22,7 +22,6 @@ function AddListing() {
   // const searchParams = useSearchParams()[0];
   const [searchParams] = useSearchParams();
   const mode = searchParams.get('mode');
-  
   const handleInputData = (name, value) => {
     setFromData((prev) => ({
       ...prev,
@@ -45,7 +44,9 @@ function AddListing() {
     try {
       const result = await db.insert(listingsTable).values({ 
       ...formData ,
-      sellersId: user.id , 
+      sellersId: user.id ,
+      // userEmail: user.primaryEmailAddress?.emailAddress ,
+      // userImageUrl : user.imageUrl ,
       features: JSON.stringify(features)
       }).returning({id: listingsTable.id});
 

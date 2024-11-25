@@ -7,6 +7,8 @@ import { listingsTable } from "@/lib/schema";
 import { eq } from "drizzle-orm";
 import { useUser } from "@clerk/clerk-react";
 import Skeleton from "@/components/Skeleton";
+import Swal from 'sweetalert2';
+
 function Index() {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,17 +31,37 @@ function Index() {
     fetchListings();
   },[user.id]);
 
+
+
   async function handleDelete(listingId) {
-    try {
-      setListings((prevListings) =>
-        prevListings.filter((listing) => listing.id !== listingId)
-      );
-      await db.delete(listingsTable).where(eq(listingsTable.id, listingId))
-      console.log("Listing deleted");
-    } catch (error) {
-      console.error("Error deleting listing:", error);
-    }
-  };
+      try {
+          const result = await Swal.fire({
+              title: 'Are you sure?',
+              text: "Are you sure you want to delete this listing?",
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes',
+              cancelButtonText: 'Cancel',
+              customClass: {
+                  popup: 'bg-gray-100 rounded-lg p-2',
+                  title: 'text-xl font-bold text-red-500',
+              }
+          });
+  
+          if (result.isConfirmed) {
+              setListings((prevListings) =>
+                  prevListings.filter((listing) => listing.id !== listingId)
+              );
+              await db.delete(listingsTable).where(eq(listingsTable.id, listingId));
+              Swal.fire('Deleted!', 'Your listing has been deleted.', 'success');
+          }
+      } catch (error) {
+          console.error("Error deleting listing:", error);
+          Swal.fire('Error!', 'There was an issue deleting the listing.', 'error');
+      }
+  }
+  
 
   async function handleEdit(listingId) {
     try {
@@ -73,10 +95,11 @@ function Index() {
             listings.map((listing) => (
               <div 
               key={listing.id} 
-              onClick={()=> navigate(`/car/${listing.id}`)}
               className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
                 <div className="h-40 bg-gray-200 overflow-hidden">
-                  <img src={listing.imageUrl} className="object-cover w-full h-full" />
+                  <img 
+                  onClick={()=> navigate(`/car/${listing.id}`)}
+                  src={listing.imageUrl} className="object-cover w-full h-full" />
                 </div>
 
                 <div>
