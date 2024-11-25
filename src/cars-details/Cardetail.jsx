@@ -31,6 +31,8 @@ function Cardetail() {
 
     getcardetails();
   }, [id]); 
+
+  
     return (
       <div>
         <Header />
@@ -46,7 +48,7 @@ function Cardetail() {
                   <Features features={listingdetail[0].features}/>
                 </div>
                 <div>
-                  <CarPrice price={listingdetail[0].sellingPrice} />
+                  <CarPrice Sprice={listingdetail[0].sellingPrice} Oprice={listingdetail[0].originalPrice} />
                   <Cardetails details={listingdetail[0]} />
                   <ContactOwner userId={listingdetail[0].sellersId} />
                 </div>

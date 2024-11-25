@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 function CarItem({ car }) {
+  const navigate = useNavigate();
   return (
     <div className="p-14 select-none">
       <div className="border-2 border-zinc-900 rounded-xl w-[300px] p-2 bg-yellow-50">
@@ -44,9 +46,10 @@ function CarItem({ car }) {
         <div className="flex mx-1 justify-between py-2 items-center">
           <div className="text-lg font-semibold googlehandfont">
           </div>
-          <a href="#" className="text-blue-700">
+          <p className="text-blue-700 cursor-pointer"
+          onClick={() => navigate(`/car/${car.id}`)}>
             View Details
-          </a>
+          </p>
         </div>
       </div>
     </div>

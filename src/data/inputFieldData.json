@@ -99,7 +99,7 @@
         "required": true
       },
       {
-        "label": "Cylinder",
+        "label": "Cylinder (cc)",
         "name": "cylinder",
         "fieldType": "number",
         "column": 2,
@@ -119,7 +119,7 @@
         "name": "fuelType",
         "fieldType": "dropdown",
         "column": 2,
-        "options": ["Gasoline", "Electric"],
+        "options": ["Gasoline", "Electric" , "Hybrid"],
         "icon": "fuelType-icon",
         "required": true
       },
@@ -132,14 +132,14 @@
         "icon": "vin-icon"
       },
       {
-        "label": "Engine Size",
+        "label": "Engine Size (cc)",
         "name": "engineSize",
         "fieldType": "number",
         "column": 2,
         "icon": "engine-size-icon"
       },
       {
-        "label": "Mileage",
+        "label": "Mileage (km/L)",
         "name": "mileage",
         "fieldType": "number",
         "column": 2,

@@ -5,7 +5,7 @@ function Carscard({listing}) {
   return (
     <div>
       <div
-      onClick={()=> navigate(`/car/${listing.id}`)}
+
       className="p-3 border-b rounded-lg border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
           <img className="rounded-lg" src={listing.imageUrl}/>
           <div>
@@ -25,7 +25,9 @@ function Carscard({listing}) {
                   src={
                     listing.fuelType == "Electric"
                       ? "https://img.icons8.com/?size=100&id=6IpUNvyPYBgm&format=png&color=000000"
-                      : "https://img.icons8.com/?size=100&id=3679&format=png&color=000000"
+                      : listing.fuelType == "Hybrid"
+                        ? "https://img.icons8.com/?size=100&id=cy8FC3SRB9Zb&format=png&color=000000"
+                        : "https://img.icons8.com/?size=100&id=3679&format=png&color=000000"
                   }
                   className="size-10"/>
 
@@ -44,7 +46,8 @@ function Carscard({listing}) {
           </div>
           <div className="flex justify-between">
           <button
-                className="text-gray-600 px-2 rounded-full bg-gray-300 flex gap-3">
+                className="text-gray-600 px-2 rounded-full bg-gray-300 flex gap-3"
+                onClick={()=> navigate(`/car/${listing.id}`)}>
                 Make a deal <Link2Icon/>
               </button>
             {/* <img src='d' className="w-6 h-6 rounded-full object-cover" alt="User Profile" /> */}

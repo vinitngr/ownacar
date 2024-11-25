@@ -2,7 +2,6 @@ import { CheckIcon, X } from "lucide-react"
 import data from "../../data/Features.json"
 function Features({ features }) {
 
-  console.log('hi', features , data.features)
   return (
     <div>
       <div className="p-3 border-2 my-4 rounded">
