@@ -6,6 +6,7 @@ import Category from "./components/Category";
 import MostSearched from "./components/MostSearched";
 import Footer from "./components/Footer";
 import Other from "./components/Other";
+import { Toaster } from "sonner";
 function Home() {
 
   return (

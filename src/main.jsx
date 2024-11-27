@@ -11,6 +11,7 @@ import ProtectedRoute   from './components/securejsx/ProtectedRoute';
 import NotFound from './components/securejsx/NotFound';
 import SearchCars from './components/searchPage/SearchCars';
 import Cardetail from './cars-details/Cardetail';
+import { Toaster } from 'sonner';
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <RouterProvider router={router} />
+      <Toaster richColors/>
     </ClerkProvider>
   </StrictMode>,
 );

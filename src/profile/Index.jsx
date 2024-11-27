@@ -19,6 +19,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Edit, Trash } from "lucide-react";
+import { toast } from "sonner";
 
 function Index() {
   const [listings, setListings] = useState([]);
@@ -44,17 +45,36 @@ function Index() {
 
 
 
-async function handleDelete(listingId) {
-      try {
-        setListings((prevListings) =>
-          prevListings.filter((listing) => listing.id !== listingId)
+  async function handleDelete(listing) {
+    console.log(listing);
+    try {
+      await db.delete(listingsTable).where(eq(listingsTable.id, listing.id));
+
+      setListings((prevListings) =>
+        prevListings.filter((l) => l.id !== listing.id)
       );
-      await db.delete(listingsTable).where(eq(listingsTable.id, listingId));
-      } catch (error) {
-          console.error("Error deleting listing:", error);
-      }
-  }
+      
+      toast.success('Listing Deleted successfully' , {duration:1000})
+      toast('Listing deleted successfully', {
+        cancel: {
+          label: 'Undo',
+          onClick: async () => {
+            try {
+              await db.insert(listingsTable).values(listing);
+              setListings((prevListings) => [...prevListings, listing]);
+            } catch (insertError) {
+              console.error("Error restoring listing:", insertError);
+              toast('Failed to restore listing', { type: 'error' });
+            }
+          },
+        },
+      } , {duration: 2500});
   
+    } catch (error) {
+      console.error("Error deleting listing:", error);
+      toast('Failed to delete listing', { type: 'error' });
+    }
+  }
 
   async function handleEdit(listing) {
     try {
@@ -141,7 +161,7 @@ async function handleDelete(listingId) {
                   
                   <AlertDialog>
                     <AlertDialogTrigger
-                      className="text-red-400 rounded p-1 w-14 flex justify-center bg-red-100">
+                      className="delete text-red-400 rounded p-1 w-14 flex justify-center bg-red-100">
                       <Trash/>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
@@ -155,7 +175,9 @@ async function handleDelete(listingId) {
                       <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
                         <AlertDialogAction variants='destructive'
-                        onClick={() => handleDelete(listing.id)}
+                        onClick={() => {
+                          handleDelete(listing)
+                        }}
                         className='bg-red-500 hover:bg-red-600'>Continue</AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>

@@ -38,7 +38,7 @@ function UploadImage({setimages}) {
 
   return (
     <>
-      <div className="mb-4 text-xl googlehandfontlb">Upload Image</div>
+      <div className="mb-4 text-xl googlehandfontlb">Upload Image <span className='text-xs text-red-500'>(not implemented)</span></div>
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3 lg:grid-cols-6">
         {uploadedImages.map((image, index) => (
         <div key={index} className='flex '>

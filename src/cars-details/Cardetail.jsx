@@ -59,7 +59,7 @@ function Cardetail() {
             <Cardetailskeleton/>
           )}
         </div>
-
+          
         <MostSearched head='other similar options'/>
       </div>
     );

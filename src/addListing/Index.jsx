@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { eq } from "drizzle-orm";
 import CheckBox from "./components/CheckBox";
+import { toast } from "sonner";
 
 function AddListing() {
   // Navigation and Location hooks
@@ -72,9 +73,12 @@ function AddListing() {
           })
           .where(eq(listingsTable.id, listing.id))
           .returning({ id: listingsTable });
-        result && navigate("/profile"); 
-      } catch (error) {
-        console.error("Error while updating data:", error);
+          toast.success('Listing Updated successfully' , {duration:1500})
+        } catch (error) {
+          console.error("Error while updating data:", error);
+          toast.error('Error Updating Listing' , {duration:1500})
+        }finally{
+          navigate("/profile"); 
       }
     } 
     // If creating a new listing
@@ -92,13 +96,13 @@ function AddListing() {
             features: JSON.stringify(features),
           })
           .returning({ id: listingsTable.id });
-
-        if (result) {
+          toast.success('Listing Added successfully' , {duration:1500})
+        } catch (error) {
+          console.error("Error inserting data:", error);
+          toast.error('Error adding listing' , {duration:1500})
+        }finally{
           navigate("/profile"); // Redirect on success
         }
-      } catch (error) {
-        console.error("Error inserting data:", error);
-      }
     }
   };
 
@@ -157,7 +161,6 @@ function AddListing() {
                 SUBMIT
               </button>
             </div>
-            
           </div>
         </form>
       </div>
