@@ -7,7 +7,17 @@ import { listingsTable } from "@/lib/schema";
 import { eq } from "drizzle-orm";
 import { useUser } from "@clerk/clerk-react";
 import Skeleton from "@/components/Skeleton";
-import Swal from 'sweetalert2';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 function Index() {
   const [listings, setListings] = useState([]);
@@ -33,32 +43,14 @@ function Index() {
 
 
 
-  async function handleDelete(listingId) {
+async function handleDelete(listingId) {
       try {
-          const result = await Swal.fire({
-              title: 'Are you sure?',
-              text: "Are you sure you want to delete this listing?",
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes',
-              cancelButtonText: 'Cancel',
-              customClass: {
-                  popup: 'bg-gray-100 rounded-lg p-2',
-                  title: 'text-xl font-bold text-red-500',
-              }
-          });
-  
-          if (result.isConfirmed) {
-              setListings((prevListings) =>
-                  prevListings.filter((listing) => listing.id !== listingId)
-              );
-              await db.delete(listingsTable).where(eq(listingsTable.id, listingId));
-              Swal.fire('Deleted!', 'Your listing has been deleted.', 'success');
-          }
+        setListings((prevListings) =>
+          prevListings.filter((listing) => listing.id !== listingId)
+      );
+      await db.delete(listingsTable).where(eq(listingsTable.id, listingId));
       } catch (error) {
           console.error("Error deleting listing:", error);
-          Swal.fire('Error!', 'There was an issue deleting the listing.', 'error');
       }
   }
   
@@ -138,11 +130,29 @@ function Index() {
                 </div>
                 <div className="flex justify-between">
                   <div className="flex gap-2 w-full">
-                    <button
-                      className="text-red-300 w-1/2 rounded-full bg-red-100"
-                      onClick={() => handleDelete(listing.id)}>
-                      delete
-                    </button>
+
+                  <AlertDialog>
+                      <AlertDialogTrigger
+                       className="text-red-400 w-1/2 rounded-full bg-red-100">
+                        delete
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Are you sure you want to delete your listing?</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            you are deleting <span className="text-red-700 cursor-pointer">{listing.listingTitle} </span>
+                            from Your Listing ? This action can`t be undone later on
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction variants='destructive'
+                          onClick={() => handleDelete(listing.id)}
+                          className='bg-red-500 hover:bg-red-600'>Continue</AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+
                     <button
                       className="text-blue-400 w-1/2 rounded-full bg-blue-100"
                       onClick={() => handleEdit(listing.id)}>
