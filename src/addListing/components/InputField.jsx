@@ -3,8 +3,8 @@ function inputField({listing ,  item, handleInputData }) {
   return (
     <div>
         <input
-        defaultValue={listing?.[item.name]}
-        autoComplete="off"
+          defaultValue={listing?.[item.name]}
+          autoComplete="off"
           onChange={(e) => handleInputData(item.name, e.target.value)}
           name={item.name}
           placeholder={item.label}

@@ -1,6 +1,5 @@
 
 function ContactOwner({userId}) {
-  console.log(userId);
   return (
     <>
       <div className=" border-2 p-6 lg:order-3 order-3 rounded-lg" >

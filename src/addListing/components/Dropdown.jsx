@@ -11,7 +11,7 @@ function Dropdown({listing , item , handleInputData}) {
   return (
     <div>
       <Select 
-      value={listing?.[item.name]}
+      defaultValue={listing?.[item.name]}
       onValueChange={(value) => handleInputData(item.name, value)}  
       name={item.name} placeholder={item.label} type={item.fieldType} required={item.required}  >
         <SelectTrigger className="w-full rounded mt-1 h-10  border-black border text-black" >

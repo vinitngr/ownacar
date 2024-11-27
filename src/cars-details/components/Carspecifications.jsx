@@ -1,7 +1,5 @@
 import data from '../../data/cars-data'
 function Cardetails({ details }) {
-  console.log(details);
-  
   return (
     <>
       <div className="border-2 rounded-lg p-6 order-1">
