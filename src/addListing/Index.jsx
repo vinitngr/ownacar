@@ -2,65 +2,103 @@ import { useUser } from "@clerk/clerk-react";
 import Header from "@/components/Header";
 import InputField from "./components/InputField";
 import Dropdown from "./components/dropdown";
-import inputFieldData from "../data/inputFieldData.json";
+import Data from "../data/inputFieldData.json";
 import Textarea from "./components/textarea";
 import Features from "../data/Features.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UploadImage from "./components/UploadImage";
 import { db } from "@/lib/db";
 import { listingsTable } from "../lib/schema";
-import { useLocation, useNavigate} from "react-router-dom";
-// import { useSearchParams } from "react-router-dom";
-function AddListing() {
-  const navigate = useNavigate()
-  const location = useLocation();
-  const { user } = useUser(); 
-  // const [searchParams] = useSearchParams();
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { eq } from "drizzle-orm";
+import CheckBox from "./components/CheckBox";
 
-  const [formData, setFromData] = useState({}); 
+function AddListing() {
+  // Navigation and Location hooks
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+
+  // Clerk user information
+  const { user } = useUser();
+
+  // State management
+  const [formData, setFromData] = useState({});
   const [features, setFeatures] = useState({});
   const [images, setImages] = useState([]);
-  //const [triggerUploadImages, settriggerUploadImages] = useState('')
- 
-  // const searchParams = useSearchParams()[0];
-  // const mode = searchParams.get('mode');
-  const {listing} = location.state || '' ;
-   
+
+  // Determine if we are in "edit" mode
+  const mode = searchParams.get("mode");
+  const { listing } = location.state || "";
+
+  // Populate fields if in edit mode
+  useEffect(() => {
+    if (mode === "edit" && listing) {
+      setFromData(listing);
+        setFeatures(listing.features);
+    }
+  }, [mode, listing]);
+
+  // Handle input data for form fields
   const handleInputData = (name, value) => {
     setFromData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
-
+  // Handle input data for features
   const handleFeatures = (name, value) => {
     setFeatures((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
+
+  // Handle form submission
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!user) {
-      console.error("User not authenticated");
-      return; 
-    }
-    try {
-      const result = await db.insert(listingsTable).values({ 
-      ...formData ,
-      sellersId: user.id ,
-      // userEmail: user.primaryEmailAddress?.emailAddress ,
-      // userImageUrl : user.imageUrl ,
-      features: JSON.stringify(features)
-      }).returning({id: listingsTable.id});
 
-      if(result){
-        // settriggerUploadImages(result[0]?.id)
-        navigate('/profile') ;
+    // If editing an existing listing
+    if (mode === "edit") {
+      try {
+        const { id, ...updateData } = formData;
+        const result = await db
+          .update(listingsTable)
+          .set({
+            ...updateData,
+            sellersId: user.id,
+            features: features,
+          })
+          .where(eq(listingsTable.id, listing.id))
+          .returning({ id: listingsTable });
+        result && navigate("/profile"); 
+      } catch (error) {
+        console.error("Error while updating data:", error);
       }
-      
-    } catch (error) {
-      console.error("Error inserting data:", error);
+    } 
+    // If creating a new listing
+    else {
+      if (!user) {
+        console.error("User not authenticated");
+        return;
+      }
+      try {
+        const result = await db
+          .insert(listingsTable)
+          .values({
+            ...formData,
+            sellersId: user.id,
+            features: JSON.stringify(features),
+          })
+          .returning({ id: listingsTable.id });
+
+        if (result) {
+          navigate("/profile"); // Redirect on success
+        }
+      } catch (error) {
+        console.error("Error inserting data:", error);
+      }
     }
   };
 
@@ -73,10 +111,12 @@ function AddListing() {
         </h1>
         <form onSubmit={onSubmit}>
           <div className="flex flex-col gap-3">
+
+            {/* Input Fields */}
             <div className="border-zinc-400 border-2 p-5 ">
               <div className="mb-4 text-xl googlehandfontlb">Car Details</div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {inputFieldData.inputFields.map((item, index) => (
+                {Data.inputFields.map((item, index) => (
                   <div key={index}>
                     <label>
                       {item.label}
@@ -93,28 +133,23 @@ function AddListing() {
                 ))}
               </div>
             </div>
+
+            {/* CheckBox */}
             <div className="ring-1 ring-zinc-500 p-5 ">
               <div className="googlehandfontlb mb-2 text-xl ">Features</div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {Features.features.map((item, index) => (
-                  <div key={index} className="p-1 flex border ">
-                    <label className="flex items-center flex-row-reverse">
-                      {item.label}
-                      <input
-                        defaultChecked={listing?.features?.[item.name] || false}
-                        onChange={(e) => handleFeatures(item.name, e.target.checked)}
-                        className="m-2 size-4"
-                        name={item.name}
-                        type={item.fieldType}
-                      />
-                    </label>
-                  </div>
+                  <CheckBox key={index} features={listing?.features} item={item} handleFeatures={handleFeatures}/>
                 ))}
               </div>
             </div>
+
+            {/* UploadImage */}
             <div className="border-2 border-zinc-400 p-5">
               <UploadImage images={images} setImages={setImages}/>
             </div>
+
+            {/* Button */}
             <div className="flex justify-end">
               <button
                 type="submit"
@@ -122,11 +157,13 @@ function AddListing() {
                 SUBMIT
               </button>
             </div>
+            
           </div>
         </form>
       </div>
     </div>
   );
 }
+
 
 export default AddListing;
