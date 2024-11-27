@@ -13,7 +13,7 @@ function Home() {
       <Header/>
       <Hero/>
       <Category/>
-      <MostSearched/>
+      <MostSearched head={'Moost Searched Cars'}/>
       <Other/>
       <Footer/>
     </div>

@@ -1,174 +1,175 @@
-  {
-    "inputFields": [
-      {
-        "label": "Listing Title",
-        "name": "listingTitle",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "listing-icon",
-        "required": true
-      },
-      {
-        "label": "Tagline",
-        "name": "tagline",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "tagline-icon"  
-      },
-      {
-        "label": "Original Price",
-        "name": "originalPrice",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "price-icon",
-        "required": true
-      },
-      {
-        "label": "Selling Price",
-        "name": "sellingPrice",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "price-icon",
-        "required": true
-      },
-      {
-        "label": "Category",
-        "name": "category",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "category-icon",
-        "required": true,
-        "options": ["Sedan", "SUV", "coupe" , "hybrid" ,"convertible" , "Minivan","Truck", "Electric", "HetchBack"]
-      },
-      {
-        "label": "Condition",
-        "name": "condition",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "condition-icon",
-        "required": true,
-        "options": ["New", "Used - Like New", "Used - Good", "Used - Fair" , "Old"]
-      },
-      {
-        "label": "Type",
-        "name": "type",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "type-icon"
-      },
-      {
-        "label": "Maker",
-        "name": "maker",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "maker-icon",
-        "options": [
-          "Toyota",
-          "Ford",
-          "Honda",
-          "Chevrolet",
-          "Nissan",
-          "Volkswagen",
-          "Hyundai",
-          "Kia",
-          "BMW",
-          "Mercedes-Benz",
-          "Jeep",
-          "Dodge",
-          "Chrysler",
-          "Mazda",
-          "Subaru"
-        ],
-        "required": true
-      },
-      {
-        "label": "Year",
-        "name": "year",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "year-icon",
-        "required": true
-      },
-      {
-        "label": "Drive Type",
-        "name": "driveType",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "drive-icon",
-        "options": ["4WD", "FWD", "RWD", "AWD"],
-        "required": true
-      },
-      {
-        "label": "Cylinder (cc)",
-        "name": "cylinder",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "cylinder-icon"
-      },
-      {
-        "label": "Color",
-        "name": "color",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "color-icon",
-        "options": ["red", "blue", "green", "black", "white", "other"],
-        "required": true
-      },
-      {
-        "label": "fuel type",
-        "name": "fuelType",
-        "fieldType": "dropdown",
-        "column": 2,
-        "options": ["Gasoline", "Electric" , "Hybrid"],
-        "icon": "fuelType-icon",
-        "required": true
-      },
-
-      {
-        "label": "VIN",
-        "name": "vin",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "vin-icon"
-      },
-      {
-        "label": "Engine Size (cc)",
-        "name": "engineSize",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "engine-size-icon"
-      },
-      {
-        "label": "Mileage (km/L)",
-        "name": "mileage",
-        "fieldType": "number",
-        "column": 2,
-        "icon": "mileage-icon",
-        "required": true
-      },
-      {
-        "label": "Transmission",
-        "name": "transmission",
-        "fieldType": "dropdown",
-        "column": 2,
-        "icon": "transmission-icon",
-        "options": ["Automatic", "Manual", "CVT", "Semi-Automatic"],
-        "required": true
-      },
-      {
-        "label": "placeholder image",
-        "name": "imageUrl",
-        "fieldType": "text",
-        "column": 2,
-        "icon": "link-icon" 
-      },
-      {
-        "label": "Listing Description",
-        "name": "listingDescription",
-        "fieldType": "textarea",
-        "column": 2,
-        "icon": "description-icon",
-        "required": true  
-      }
-    ]
-  }
+{
+  "inputFields": [
+    {
+      "label": "Listing Title",
+      "name": "listingTitle",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "listing-icon",
+      "required": true
+    },
+    {
+      "label": "Tagline",
+      "name": "tagline",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "tagline-icon"
+    },
+    {
+      "label": "Original Price",
+      "name": "originalPrice",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "price-icon",
+      "required": true
+    },
+    {
+      "label": "Selling Price",
+      "name": "sellingPrice",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "price-icon",
+      "required": true
+    },
+    {
+      "label": "Category",
+      "name": "category",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "category-icon",
+      "required": true,
+      "options": [
+        "Sedan", "SUV", "Coupe", "Hybrid", "Convertible", "Minivan", "Truck", "Electric", "Hatchback"
+      ]
+    },
+    {
+      "label": "Condition",
+      "name": "condition",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "condition-icon",
+      "required": true,
+      "options": [
+        "New", "Used - Like New", "Used - Good", "Used - Fair", "Old"
+      ]
+    },
+    {
+      "label": "Car Type (e.g. Compact, Mid-size)",
+      "name": "type",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "type-icon",
+      "options": [
+        "Compact", "Mid-size", "Full-size", "Luxury", "Sports", "Crossover", "Coupe", "Wagon"
+      ]
+    },
+    {
+      "label": "Maker",
+      "name": "maker",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "maker-icon",
+      "options": [
+        "Toyota", "Ford", "Honda", "Chevrolet", "Nissan", "Volkswagen", "Hyundai", "Kia", "BMW", "Mercedes-Benz",
+        "Jeep", "Dodge", "Chrysler", "Mazda", "Subaru", "Audi"
+      ],
+      "required": true
+    },
+    {
+      "label": "Year",
+      "name": "year",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "year-icon",
+      "required": true
+    },
+    {
+      "label": "Drive Type",
+      "name": "driveType",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "drive-icon",
+      "options": [
+        "4WD", "FWD", "RWD", "AWD"
+      ],
+      "required": true
+    },
+    {
+      "label": "Cylinder (cc)",
+      "name": "cylinder",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "cylinder-icon"
+    },
+    {
+      "label": "Color",
+      "name": "color",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "color-icon",
+      "options": [
+        "Red", "Blue", "Green", "Black", "White", "Gray" ,"Other"
+      ],
+      "required": true
+    },
+    {
+      "label": "Fuel Type",
+      "name": "fuelType",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "fuelType-icon",
+      "options": [
+        "Gasoline", "Electric", "Hybrid"
+      ],
+      "required": true
+    },
+    {
+      "label": "VIN",
+      "name": "vin",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "vin-icon"
+    },
+    {
+      "label": "Engine Size (cc)",
+      "name": "engineSize",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "engine-size-icon"
+    },
+    {
+      "label": "Mileage (km/L)",
+      "name": "mileage",
+      "fieldType": "number",
+      "column": 2,
+      "icon": "mileage-icon",
+      "required": true
+    },
+    {
+      "label": "Transmission",
+      "name": "transmission",
+      "fieldType": "dropdown",
+      "column": 2,
+      "icon": "transmission-icon",
+      "options": [
+        "Automatic", "Manual", "CVT", "Semi-Automatic"
+      ],
+      "required": true
+    },
+    {
+      "label": "Placeholder Image URL",
+      "name": "imageUrl",
+      "fieldType": "text",
+      "column": 2,
+      "icon": "link-icon"
+    },
+    {
+      "label": "Listing Description",
+      "name": "listingDescription",
+      "fieldType": "textarea",
+      "column": 2,
+      "icon": "description-icon",
+      "required": true
+    }
+  ]
+}

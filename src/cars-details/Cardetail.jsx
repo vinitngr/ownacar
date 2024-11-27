@@ -12,6 +12,7 @@ import Imgdescription from "./components/Img-description"
 
 import Tags from "./components/Tags"
 import Cardetailskeleton from "./components/Skeleton"
+import MostSearched from "@/components/MostSearched"
 function Cardetail() {
   const [listingdetail, setlistingdetail] = useState();
   const { id } = useParams();
@@ -58,6 +59,8 @@ function Cardetail() {
             <Cardetailskeleton/>
           )}
         </div>
+
+        <MostSearched head='other similar options'/>
       </div>
     );
 

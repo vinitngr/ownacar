@@ -13,7 +13,7 @@ import { listingsTable } from "@/lib/schema";
 import { sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 
-function MostSearched() {
+function MostSearched({head}) {
   const [popItems, setPopItems] = useState([]);
   
   useEffect(() => {
@@ -37,7 +37,7 @@ function MostSearched() {
   return (
     <div className="mx-20 mt-24">
       <div className="text-center text-3xl p-3 googlehandfont">
-        Most Searched Cars
+        {head}
       </div>
 
       <Carousel>
