@@ -9,19 +9,23 @@ import { useState } from "react";
 import UploadImage from "./components/UploadImage";
 import { db } from "@/lib/db";
 import { listingsTable } from "../lib/schema";
-import { useNavigate} from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
+// import { useSearchParams } from "react-router-dom";
 function AddListing() {
   const navigate = useNavigate()
+  const location = useLocation();
   const { user } = useUser(); 
+  // const [searchParams] = useSearchParams();
+
   const [formData, setFromData] = useState({}); 
   const [features, setFeatures] = useState({});
   const [images, setImages] = useState([]);
-//const [triggerUploadImages, settriggerUploadImages] = useState('')
+  //const [triggerUploadImages, settriggerUploadImages] = useState('')
  
   // const searchParams = useSearchParams()[0];
-  const [searchParams] = useSearchParams();
-  const mode = searchParams.get('mode');
+  // const mode = searchParams.get('mode');
+  const {listing} = location.state || '' ;
+   
   const handleInputData = (name, value) => {
     setFromData((prev) => ({
       ...prev,
@@ -79,11 +83,11 @@ function AddListing() {
                       {item.required ? <span className="text-red-500 ml-1">*</span> : ""}
                     </label>
                     {item.fieldType === "text" || item.fieldType === "number" ? (
-                      <InputField item={item} handleInputData={handleInputData} />
+                      <InputField item={item} listing={listing} handleInputData={handleInputData} />
                     ) : item.fieldType === "dropdown" ? (
-                      <Dropdown item={item} handleInputData={handleInputData} />
+                      <Dropdown item={item} listing={listing} handleInputData={handleInputData} />
                     ) : item.fieldType === "textarea" ? (
-                      <Textarea item={item} handleInputData={handleInputData} />
+                      <Textarea item={item} des={listing?.listingDescription} handleInputData={handleInputData} />
                     ) : null}
                   </div>
                 ))}
@@ -97,6 +101,7 @@ function AddListing() {
                     <label className="flex items-center flex-row-reverse">
                       {item.label}
                       <input
+                        defaultChecked={listing?.features?.[item.name] || false}
                         onChange={(e) => handleFeatures(item.name, e.target.checked)}
                         className="m-2 size-4"
                         name={item.name}

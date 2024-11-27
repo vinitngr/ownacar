@@ -7,16 +7,17 @@ import {
     SelectValue,
   } from "@/components/ui/select"
   
-function Dropdown({item , handleInputData}) {
+function Dropdown({listing , item , handleInputData}) {
   return (
     <div>
       <Select 
+      value={listing?.[item.name]}
       onValueChange={(value) => handleInputData(item.name, value)}  
       name={item.name} placeholder={item.label} type={item.fieldType} required={item.required}  >
-        <SelectTrigger className="w-full rounded mt-1 h-10 font-semibold text-gray-400 border-black border" >
-          <SelectValue placeholder={item.label} />
+        <SelectTrigger className="w-full rounded mt-1 h-10  border-black border text-black" >
+          <SelectValue placeholder={item.label}/>
         </SelectTrigger>
-        <SelectContent className='bg-white  '>
+        <SelectContent >
             {
                 item?.options?.map((option , index) => (
                     <SelectItem key={index} value={option}>{option}</SelectItem>

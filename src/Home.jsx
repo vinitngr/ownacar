@@ -6,8 +6,6 @@ import Category from "./components/Category";
 import MostSearched from "./components/MostSearched";
 import Footer from "./components/Footer";
 import Other from "./components/Other";
-import { db } from "./lib/db";
-import { listingsTable } from "./lib/schema";
 function Home() {
 
   return (

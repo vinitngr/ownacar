@@ -55,10 +55,10 @@ async function handleDelete(listingId) {
   }
   
 
-  async function handleEdit(listingId) {
+  async function handleEdit(listing) {
     try {
-      navigate(`/addListing?mode=edit`);
-      console.log("Listing edited:", listingId);
+      navigate(`/addListing?mode=edit`  , {state : {listing : listing}});
+      console.log("Listing edited:", listing.id);
     } catch (error) {
       console.error("Error editing listing:", error);
     }
@@ -155,7 +155,7 @@ async function handleDelete(listingId) {
 
                     <button
                       className="text-blue-400 w-1/2 rounded-full bg-blue-100"
-                      onClick={() => handleEdit(listing.id)}>
+                      onClick={() => handleEdit(listing)}>
                       Edit
                     </button>
                   </div>
