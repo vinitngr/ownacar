@@ -46,7 +46,9 @@ function Index() {
 
 
   async function handleDelete(listing) {
-    console.log(listing);
+    const {id , ...otherInListing} = listing;
+    console.log(otherInListing);
+
     try {
       await db.delete(listingsTable).where(eq(listingsTable.id, listing.id));
 
@@ -60,7 +62,7 @@ function Index() {
           label: 'Undo',
           onClick: async () => {
             try {
-              await db.insert(listingsTable).values(listing);
+              await db.insert(listingsTable).values(otherInListing);
               setListings((prevListings) => [...prevListings, listing]);
             } catch (insertError) {
               console.error("Error restoring listing:", insertError);
