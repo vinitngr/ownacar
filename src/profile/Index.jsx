@@ -18,6 +18,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { Edit, Trash } from "lucide-react";
 
 function Index() {
   const [listings, setListings] = useState([]);
@@ -85,19 +86,20 @@ async function handleDelete(listingId) {
             ))
           ) : listings.length > 0 ? (
             listings.map((listing) => (
-              <div 
-              key={listing.id} 
-              className="p-3 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
-                <div className="h-40 bg-gray-200 overflow-hidden">
-                  <img 
-                  onClick={()=> navigate(`/car/${listing.id}`)}
-                  src={listing.imageUrl} className="object-cover w-full h-full" />
-                </div>
+            <div 
+            key={listing.id} 
+            className="p-1 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
+              <div className="h-40 bg-gray-200 overflow-hidden">
+                <img 
+                onClick={()=> navigate(`/car/${listing.id}`)}
+                src={listing.imageUrl} className="object-cover w-full h-full" />
+              </div>
 
-                <div>
-                  <p className="font-semibold text-md mb-2">{listing.listingTitle}</p>
-                  <p className="line-clamp-2 text-sm  text-gray-600">{listing.listingDescription}</p>
-                  <div className="flex justify-between mt-3 opacity-80 scale-90 ">
+              <div className="p-3">
+                <p className="font-semibold text-md mb-2">{listing.listingTitle}</p>
+                <p className="line-clamp-1 text-sm  text-gray-600">{listing.listingDescription}</p>
+                <div className="mt-4">
+                  <div className="flex justify-between mt-3 opacity-80 scale-90">
                   <div className="flex flex-col items-center">
                     <img
                       src="https://img.icons8.com/?size=100&id=41152&format=png&color=000000"
@@ -114,7 +116,6 @@ async function handleDelete(listingId) {
                           : "https://img.icons8.com/?size=100&id=3679&format=png&color=000000"
                       }
                       className="size-10"/>
-
                     <div className="text-sm text-center googlehandfont mt-1">{listing.fuelType}
                     </div>
                   </div>
@@ -127,40 +128,42 @@ async function handleDelete(listingId) {
                     </div>
                   </div>
                 </div>
-                </div>
-                <div className="flex justify-between">
-                  <div className="flex gap-2 w-full">
+              </div>
+              </div>
+              <div className="flex justify-between">
+                <div className="flex gap-2 w-full ">
 
+                  <button
+                    className="text-gray-600 bg-gray-200 flex-1 flex justify-center gap-2 items-center rounded border"
+                    onClick={() => handleEdit(listing)}>
+                    <Edit/>Edit
+                  </button>
+                  
                   <AlertDialog>
-                      <AlertDialogTrigger
-                       className="text-red-400 w-1/2 rounded-full bg-red-100">
-                        delete
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>Are you sure you want to delete your listing?</AlertDialogTitle>
-                          <AlertDialogDescription>
-                            you are deleting <span className="text-red-700 cursor-pointer">{listing.listingTitle} </span>
-                            from Your Listing ? This action can`t be undone later on
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction variants='destructive'
-                          onClick={() => handleDelete(listing.id)}
-                          className='bg-red-500 hover:bg-red-600'>Continue</AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
+                    <AlertDialogTrigger
+                      className="text-red-400 rounded p-1 w-14 flex justify-center bg-red-100">
+                      <Trash/>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Are you sure you want to delete your listing?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          you are deleting <span className="text-red-700 cursor-pointer">{listing.listingTitle} </span>
+                          from Your Listing ? This action can`t be undone later on
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction variants='destructive'
+                        onClick={() => handleDelete(listing.id)}
+                        className='bg-red-500 hover:bg-red-600'>Continue</AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
 
-                    <button
-                      className="text-blue-400 w-1/2 rounded-full bg-blue-100"
-                      onClick={() => handleEdit(listing)}>
-                      Edit
-                    </button>
-                  </div>
                 </div>
               </div>
+            </div>
             ))
           ) : (
             <p>No listings available.</p>
