@@ -19,20 +19,21 @@ function SearchCars() {
   const price = searchParams.get('price');
   const baseprice= Number(price?.split('$')[0])
   const upperprice= Number(price?.split('$-')[1].split('$')[0])
-
+  const segment = searchParams.get('segment');
   // console.log(category , maker , baseprice , upperprice , typeof baseprice  , condition);
   useEffect(() => {
 const fetchListings = async () => {
     setLoading(true); 
-    if (category || condition || maker || baseprice || upperprice) {
+    if (category || condition || maker || baseprice || upperprice || segment ) {
       const result = await db.select().from(listingsTable)
       .where(
         and(
           category ? sql`lower(${listingsTable.category}) = ${category.toLowerCase()}` : sql`true`,
           condition ? sql`lower(${listingsTable.condition}) = ${condition.toLowerCase()}` : sql`true`,
           maker ? sql`lower(${listingsTable.maker}) = ${maker.toLowerCase()}` : sql`true`,
-          baseprice && upperprice ? between(listingsTable.sellingPrice, baseprice, upperprice) : sql`true`
-        ))
+          baseprice && upperprice ? between(listingsTable.sellingPrice, baseprice, upperprice) : sql`true` ,
+          segment ? sql`lower(${listingsTable.type}) = ${segment.toLowerCase()}` : sql`true`
+        )).limit(10);
       setListings(result);
     }else{
         const result = await db.select().from(listingsTable).limit(5);
@@ -42,7 +43,7 @@ const fetchListings = async () => {
     };
 
     fetchListings();
-  }, [category, condition , maker , baseprice , upperprice]); 
+  }, [category, condition , maker , baseprice , upperprice , segment]); 
 
   return (
     <div>

@@ -5,7 +5,7 @@ import Hero from "./components/Hero";
 import Category from "./components/Category";
 import MostSearched from "./components/MostSearched";
 import Footer from "./components/Footer";
-import Other from "./components/Other";
+import Other from "./components/Segment";
 import { Toaster } from "sonner";
 function Home() {
 

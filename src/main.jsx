@@ -12,7 +12,6 @@ import NotFound from './components/securejsx/NotFound';
 import SearchCars from './components/searchPage/SearchCars';
 import Cardetail from './cars-details/Cardetail';
 import { Toaster } from 'sonner';
-
 const router = createBrowserRouter([
   {
     path: "/",

@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom"
 
 function Other() {
+
+  const navigate = useNavigate()
   return (
     <section>
   <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -24,6 +27,7 @@ function Other() {
             <h3 className="text-xl font-medium text-white">Casual Cars</h3>
 
             <span
+              onClick={()=>navigate(`/search?segment=Casual`)}
               className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
             >
               Check Out
@@ -45,6 +49,8 @@ function Other() {
 
             <span
               className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+              onClick={()=>navigate(`/search?segment=Premium`)}
+
             >
               Check Out
             </span>
@@ -65,6 +71,7 @@ function Other() {
 
             <span
               className="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+              onClick={()=>navigate('/search?segment=Luxury')}
             >
               Check Out
             </span>

@@ -60,7 +60,7 @@
       "column": 2,
       "icon": "type-icon",
       "options": [
-        "Luxury", "Premium", "Casual"
+        "Casual" , "Premium" , "Luxury"
       ]
     },
     {
