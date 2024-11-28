@@ -1,11 +1,16 @@
 
 function inputField({listing ,  item, handleInputData }) {
+  
   return (
     <div>
         <input
           defaultValue={listing?.[item.name]}
           autoComplete="off"
-          onChange={(e) => handleInputData(item.name, e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value === "" ? null : e.target.value;
+            handleInputData(item.name, value);
+          }}
+          
           name={item.name}
           placeholder={item.label}
           type={item.fieldType}

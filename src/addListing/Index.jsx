@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useUser } from "@clerk/clerk-react";
 import Header from "@/components/Header";
 import InputField from "./components/InputField";
@@ -31,7 +32,7 @@ function AddListing() {
 
   // Determine if we are in "edit" mode
   const mode = searchParams.get("mode");
-  const { listing } = location.state || "";
+  const { listing } = location.state || {};
 
   // Populate fields if in edit mode
   useEffect(() => {
@@ -72,8 +73,9 @@ function AddListing() {
             features: features,
           })
           .where(eq(listingsTable.id, listing.id))
-          .returning({ id: listingsTable });
+          .returning({ id: listingsTable.id });
           toast.success('Listing Updated successfully' , {duration:1500})
+          console.log('listing edited successfully' , result[0].id) ;
         } catch (error) {
           console.error("Error while updating data:", error);
           toast.error('Error Updating Listing' , {duration:1500})
@@ -97,6 +99,7 @@ function AddListing() {
           })
           .returning({ id: listingsTable.id });
           toast.success('Listing Added successfully' , {duration:1500})
+          console.error('Listing added successfully' , result[0].id);
         } catch (error) {
           console.error("Error inserting data:", error);
           toast.error('Error adding listing' , {duration:1500})
