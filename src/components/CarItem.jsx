@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 function CarItem({ car }) {
   const navigate = useNavigate();
   return (
-    <div className="p-14 select-none">
+    <div className="py-5 select-none">
       <div className="border-2 border-zinc-900 rounded-xl w-[300px] p-2 bg-yellow-50">
         <div className="w-[100%] h-[200px] rounded-xl border-2 border-black bg-blue-100 overflow-hidden">
           <img
@@ -47,7 +47,12 @@ function CarItem({ car }) {
           <div className="text-lg font-semibold googlehandfont">
           </div>
           <p className="text-blue-700 cursor-pointer"
-          onClick={() => navigate(`/car/${car.id}`)}>
+          onClick={() => {
+            navigate(`/car/${car.id}`);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          >
+          
             View Details
           </p>
         </div>

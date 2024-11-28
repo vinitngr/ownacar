@@ -24,7 +24,8 @@ function Cardetail() {
           .select()
           .from(listingsTable)
           .where(eq(listingsTable.id, id));
-        setlistingdetail(result);
+          setlistingdetail(result);
+          console.log('fetched car details');
       } catch (error) {
         console.error('Error fetching car details:', error);
       }
@@ -60,7 +61,7 @@ function Cardetail() {
           )}
         </div>
           
-        <MostSearched head='other similar options'/>
+        <MostSearched head='other similar options' currentCardetails ={listingdetail?.[0]}/>
       </div>
     );
 

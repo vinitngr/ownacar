@@ -54,13 +54,13 @@
       ]
     },
     {
-      "label": "Car Type (e.g. Compact, Mid-size)",
+      "label": "carSegment",
       "name": "type",
       "fieldType": "dropdown",
       "column": 2,
       "icon": "type-icon",
       "options": [
-        "Compact", "Mid-size", "Full-size", "Luxury", "Sports", "Crossover", "Coupe", "Wagon"
+        "Luxury", "Premium", "Casual"
       ]
     },
     {

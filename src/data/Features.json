@@ -7,7 +7,7 @@
     },
     {
       "label": "Anti-lock Braking System (ABS)",
-      "name": "abs",
+      "name": "Anti-lock Braking System",
       "fieldType": "checkbox"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "label": "Air Conditioning (AC)",
-      "name": "ac",
+      "name": "Air Conditioning",
       "fieldType": "checkbox"
     },
     {

@@ -46,8 +46,8 @@ function Index() {
 
 
   async function handleDelete(listing) {
+    // eslint-disable-next-line no-unused-vars
     const {id , ...otherInListing} = listing;
-    console.log(otherInListing);
 
     try {
       await db.delete(listingsTable).where(eq(listingsTable.id, listing.id));
@@ -56,7 +56,6 @@ function Index() {
         prevListings.filter((l) => l.id !== listing.id)
       );
       
-      toast.success('Listing Deleted successfully' , {duration:1000})
       toast('Listing deleted successfully', {
         cancel: {
           label: 'Undo',
@@ -64,14 +63,17 @@ function Index() {
             try {
               await db.insert(listingsTable).values(otherInListing);
               setListings((prevListings) => [...prevListings, listing]);
+              console.log("Listing Restored:", listing.id);
             } catch (insertError) {
               console.error("Error restoring listing:", insertError);
               toast('Failed to restore listing', { type: 'error' });
             }
           },
         },
-      } , {duration: 2500});
-  
+      } , {duration: 3000});
+      toast.success('Listing Deleted successfully' , {duration:1000})
+      console.log('listing deleted successfully');
+      
     } catch (error) {
       console.error("Error deleting listing:", error);
       toast('Failed to delete listing', { type: 'error' });
@@ -81,7 +83,7 @@ function Index() {
   async function handleEdit(listing) {
     try {
       navigate(`/addListing?mode=edit`  , {state : {listing : listing}});
-      console.log("Listing edited:", listing.id);
+      console.log("Listing To Edit:", listing.id);
     } catch (error) {
       console.error("Error editing listing:", error);
     }

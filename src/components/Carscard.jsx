@@ -4,11 +4,11 @@ function Carscard({listing}) {
   const navigate = useNavigate()
   return (
     <div>
-      <div
-
-      className="p-3 border-b rounded-lg border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
-          <img className="rounded-lg" src={listing.imageUrl}/>
-          <div>
+      <div className="border-b rounded-lg border-gray-200 border-2 gap-3 flex flex-col justify-between h-96">
+          <div className="overflow-hidden">
+            <img src={listing.imageUrl} className="object-cover w-full h-full" />
+          </div>
+          <div className="px-3">
             <p className="font-semibold text-md mb-1">{listing.listingTitle}</p>
             <p className="line-clamp-2 text-lg text-gray-600">${listing.sellingPrice}</p>
             <div className="flex justify-between mt-3 opacity-80 scale-90 ">
@@ -44,16 +44,15 @@ function Carscard({listing}) {
               </div>
             </div>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between p-2" >
           <button
-                className="text-gray-600 px-2 rounded-full bg-gray-300 flex gap-3"
+                className="text-gray-600 px-2 w-full flex justify-center items-center rounded bg-gray-300 gap-3"
                 onClick={()=> navigate(`/car/${listing.id}`)}>
                 Make a deal <Link2Icon/>
               </button>
             {/* <img src='d' className="w-6 h-6 rounded-full object-cover" alt="User Profile" /> */}
           </div>
-        </div>
-
+      </div>
     </div>
   )
 }
