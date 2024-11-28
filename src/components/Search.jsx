@@ -23,7 +23,6 @@ function Search() {
     const conditions = inputFieldData.inputFields.find(field => field.name === "condition")?.options
     const segments = inputFieldData.inputFields.find(field => field.name === "type")?.options
 
-    console.log(segments , makers)
     const handleSearch = () => {
         const params = new URLSearchParams();
 

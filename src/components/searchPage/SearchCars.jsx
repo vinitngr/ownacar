@@ -28,7 +28,7 @@ const fetchListings = async () => {
       const result = await db.select().from(listingsTable)
       .where(
         and(
-          category ? sql`lower(${listingsTable.category}) = ${category.toLowerCase()}` : sql`true`,
+          category ? sql`lower(${listingsTable.category}) = ${category.toLowerCase()}` : sql`true`,  //we can use undefined instead of sql`true`
           condition ? sql`lower(${listingsTable.condition}) = ${condition.toLowerCase()}` : sql`true`,
           maker ? sql`lower(${listingsTable.maker}) = ${maker.toLowerCase()}` : sql`true`,
           baseprice && upperprice ? between(listingsTable.sellingPrice, baseprice, upperprice) : sql`true` ,

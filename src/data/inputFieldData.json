@@ -71,7 +71,8 @@
       "icon": "maker-icon",
       "options": [
         "Toyota", "Ford", "Honda", "Chevrolet", "Nissan", "Volkswagen", "Hyundai", "Kia", "BMW", "Mercedes-Benz",
-        "Jeep", "Dodge", "Chrysler", "Mazda", "Subaru", "Audi"
+        "Jeep", "Rolls-Royce", "Audi", "Porsche", "Jaguar", "TATA", "Mahindra", "Lamborghini",
+        "Ferrari", "Bentley", "Aston-Martin", "Bugatti", "McLaren", "Other"
       ],
       "required": true
     },
