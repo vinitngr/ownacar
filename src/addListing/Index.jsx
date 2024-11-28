@@ -2,10 +2,10 @@
 import { useUser } from "@clerk/clerk-react";
 import Header from "@/components/Header";
 import InputField from "./components/InputField";
-import Dropdown from "./components/dropdown";
+import Dropdown from "./components/Dropdown";
 import Data from "../data/inputFieldData.json";
-import Textarea from "./components/textarea";
 import Features from "../data/Features.json";
+import Textarea from "./components/Textarea";
 import { useEffect, useState } from "react";
 import UploadImage from "./components/UploadImage";
 import { db } from "@/lib/db";
@@ -15,6 +15,7 @@ import { useSearchParams } from "react-router-dom";
 import { eq } from "drizzle-orm";
 import CheckBox from "./components/CheckBox";
 import { toast } from "sonner";
+
 
 function AddListing() {
   // Navigation and Location hooks

@@ -1,7 +1,6 @@
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import { Navigate } from 'react-router-dom';
 
-// eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
   return (
     <div>
