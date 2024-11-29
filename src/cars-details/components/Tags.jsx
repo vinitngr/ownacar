@@ -9,13 +9,13 @@ function Tags({listing}) {
 
   return (
     <>
-    <div className="flex gap-2 mb-4">
-                <div className={tags}> <SlCalender />{listing.year}</div>
-                <div className={tags}><FaTachometerAlt />{listing.mileage} miles</div>
-                <div className={tags}><FaGears />{listing.transmission}</div>
-                <div className={tags}><FaGasPump />{listing.fuelType}</div>
-                <div className={tags}><Calendar className="scale-[0.8]"/>{listing.createdAt}</div>
-              </div>
+    <div className="flex gap-2 mb-4 w-full flex-wrap">
+      <div className={tags}> <SlCalender />{listing.year}</div>
+      <div className={tags}><FaTachometerAlt />{listing.mileage} miles</div>
+      <div className={tags}><FaGears />{listing.transmission}</div>
+      <div className={tags}><FaGasPump />{listing.fuelType}</div>
+      <div className={tags}><Calendar className="scale-[0.8]"/>{listing.createdAt}</div>
+    </div>
     </>
 )
 }

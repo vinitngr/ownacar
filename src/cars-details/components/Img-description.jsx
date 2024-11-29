@@ -3,7 +3,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 function Imgdescription({listing}) {
   return (
     <>
-        <Carousel className="rounded overflow-hidden" orientation="horizontal">
+        <Carousel 
+        className="rounded overflow-hidden" orientation="horizontal">
           <CarouselContent>
             <CarouselItem>
               <img src={listing.imageUrl} className="w-full aspect-video object-cover" alt="car pic" />
@@ -15,7 +16,6 @@ function Imgdescription({listing}) {
 
           <CarouselNext className="absolute top-1/2 right-2 -translate-y-1/2"/>
           <CarouselPrevious className="absolute top-1/2 left-2 -translate-y-1/2"/>
-
         </Carousel>
 
         <div className="p-3 border-2 my-4 rounded">
