@@ -12,6 +12,7 @@ import NotFound from './components/securejsx/NotFound';
 import SearchCars from './components/searchPage/SearchCars';
 import Cardetail from './cars-details/Cardetail';
 import { Toaster } from 'sonner';
+import { Analytics } from "@vercel/analytics/react"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -69,6 +70,7 @@ createRoot(document.getElementById('root')).render(
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <RouterProvider router={router} />
       <Toaster richColors/>
+      <Analytics/>
     </ClerkProvider>
   </StrictMode>,
 );
