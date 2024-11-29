@@ -1,0 +1,2 @@
+ALTER TABLE "listings" ADD COLUMN "user_imageurl" varchar DEFAULT 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg';--> statement-breakpoint
+ALTER TABLE "listings" ADD COLUMN "user_email" varchar DEFAULT 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg';

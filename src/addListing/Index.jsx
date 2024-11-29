@@ -22,7 +22,7 @@ function AddListing() {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams] = useSearchParams();
-
+  
   // Clerk user information
   const { user } = useUser();
 
@@ -72,6 +72,9 @@ function AddListing() {
             ...updateData,
             sellersId: user.id,
             features: features,
+            userImageUrl: user.imageUrl,
+            userEmail: user.primaryEmailAddress?.emailAddress,
+            username: user.fullName
           })
           .where(eq(listingsTable.id, listing.id))
           .returning({ id: listingsTable.id });
@@ -97,6 +100,9 @@ function AddListing() {
             ...formData,
             sellersId: user.id,
             features: JSON.stringify(features),
+            userImageUrl: user.imageUrl,
+            userEmail: user.primaryEmailAddress?.emailAddress,
+            username: user.fullName
           })
           .returning({ id: listingsTable.id });
           toast.success('Listing Added successfully' , {duration:1500})

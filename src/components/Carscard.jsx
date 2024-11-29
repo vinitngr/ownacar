@@ -44,13 +44,13 @@ function Carscard({listing}) {
               </div>
             </div>
           </div>
-          <div className="flex justify-between p-2" >
+          <div className="flex justify-between p-1 gap-2" >
           <button
-                className="text-gray-600 px-2 w-full flex justify-center items-center rounded bg-gray-300 gap-3"
+                className="text-gray-600 flex-grow flex h-8 justify-center items-center rounded bg-gray-300 gap-3"
                 onClick={()=> navigate(`/car/${listing.id}`)}>
                 Make a deal <Link2Icon/>
               </button>
-            {/* <img src='d' className="w-6 h-6 rounded-full object-cover" alt="User Profile" /> */}
+            <div className="size-8 rounded overflow-hidden"><img src={listing.userImageUrl} className="w-full h-full object-cover" alt="User Profile" /></div>
           </div>
       </div>
     </div>

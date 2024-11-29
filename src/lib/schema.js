@@ -24,6 +24,9 @@ export const listingsTable = pgTable("listings", {
   listingDescription: text().notNull(),
   features : json(),
   imageUrl : varchar('imageUrl').default('https://motozitelive.blob.core.windows.net/motozite-live/newcars_images/1670408218No-Image.jpg'),
+  userImageUrl : varchar('user_imageurl').default('https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'),
+  userEmail : varchar('user_email').default('****56@gmail.com'),
+  username : varchar('user_name').default('Anonymous'),
 });
 
 

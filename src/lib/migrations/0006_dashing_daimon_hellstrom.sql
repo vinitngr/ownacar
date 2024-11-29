@@ -1,0 +1,1 @@
+ALTER TABLE "listings" ALTER COLUMN "user_email" SET DEFAULT 'v@gmail.com';

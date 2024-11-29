@@ -57,15 +57,16 @@ const carSpecifications = [
     { name: "condition", label: "Condition" },
     { name: "maker", label: "Maker" },
     { name: "year", label: "Year" },
-    { name: "mileage", label: "Mileage" },
+    { name: "mileage", label: "Mileage (km/L)" },
     { name: "type", label: "Type" },
     { name: "driveType", label: "Drive Type" },
-    { name: "cylinder", label: "Cylinder" },
+    { name: "cylinder", label: "Cylinder (cc)" },
     { name: "color", label: "Color" },
     { name: "fuelType", label: "Fuel Type" },
     { name: "vin", label: "VIN" },
-    { name: "engineSize", label: "Engine Size" },
+    { name: "engineSize", label: "Engine Size (cc)" },
     { name: "transmission", label: "Transmission" },
+    { name: "type", label: "segment" }
 ];
 
 export default {pricing , Categories , carSpecifications}

@@ -36,6 +36,20 @@
       "when": 1732217276675,
       "tag": "0004_fine_tiger_shark",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1732865838383,
+      "tag": "0005_minor_power_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1732865876258,
+      "tag": "0006_dashing_daimon_hellstrom",
+      "breakpoints": true
     }
   ]
 }

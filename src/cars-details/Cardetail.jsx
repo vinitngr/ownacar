@@ -52,7 +52,7 @@ function Cardetail() {
                 <div className="grid gap-4">
                   <CarPrice Sprice={listingdetail[0].sellingPrice} Oprice={listingdetail[0].originalPrice} />
                   <Cardetails details={listingdetail[0]} />
-                  <ContactOwner userId={listingdetail[0].sellersId} />
+                  <ContactOwner details={listingdetail[0]} />
                 </div>
               </div>
             </>
