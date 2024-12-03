@@ -43,7 +43,8 @@ function MostSearched({ head, currentCardetails }) {
               or(
                 eq(listingsTable.category, currentCardetails.category),
                 eq(listingsTable.maker, currentCardetails.maker),
-                eq(listingsTable.condition, currentCardetails.condition)
+                eq(listingsTable.condition, currentCardetails.condition),
+                eq(listingsTable.type, currentCardetails.type)
               )
             )
             .limit(8);
