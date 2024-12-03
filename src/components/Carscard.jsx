@@ -47,7 +47,7 @@ function Carscard({listing}) {
           <div className="flex justify-between p-1 gap-2" >
           <button
                 className="text-gray-600  flex-grow flex h-8 justify-center items-center rounded bg-gray-300 gap-3"
-                onClick={()=> navigate(`/car/${listing.id}`)}>
+                onClick={()=> navigate(`/car/${listing.id}` , {state : { listing : listing }})}>
                 Make a deal <Link2Icon/>
               </button>
             <div className="size-8 rounded border-2  overflow-hidden"><img src={listing.userImageUrl} className="w-full h-full object-cover" alt="User Profile" /></div>

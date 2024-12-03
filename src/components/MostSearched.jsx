@@ -97,7 +97,7 @@ function MostSearched({ head, currentCardetails }) {
       ) : (
         <div className="grid skeleton-grid mt-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center 2xl:grid-cols-4 gap-4">
           {Array.from({ length: skeletonCount }).map((_, i) => (
-            <div key={i} className="skeleton h-96 w-3/4 animate-pulse bg-gray-300  "></div>
+            <div key={i} className="skeleton h-96 w-[300px] animate-pulse bg-gray-300 rounded-lg "></div>
           ))}
         </div>
       )}

@@ -13,28 +13,37 @@ import Imgdescription from "./components/Img-description"
 import Tags from "./components/Tags"
 import Cardetailskeleton from "./components/Skeleton"
 import MostSearched from "@/components/MostSearched"
+import { useLocation } from "react-router-dom"
 import DeleteListingButton from "./components/SuperDelete"
 function Cardetail() {
   const [listingdetail, setlistingdetail] = useState();
   const { id } = useParams();
+  const location = useLocation(); 
+  const { listing } = location.state || {}; 
 
   useEffect(() => {
     async function getcardetails() {
       try {
+        console.log("Fetching data from the database...");
         const result = await db
           .select()
           .from(listingsTable)
           .where(eq(listingsTable.id, id));
-          setlistingdetail(result);
-          console.log('fetched car details');
+        setlistingdetail(result);
+        console.log("Data fetched:", result);
       } catch (error) {
-        console.error('Error fetching car details:', error);
+        console.error("Error fetching car details:", error);
       }
     }
 
-    getcardetails();
-  }, [id]); 
-
+    if (listing) {
+      console.log("Using state-provided listing:", listing);
+      setlistingdetail([listing]);
+    } else {
+      console.log("No state provided, fetching from API...");
+      getcardetails();
+    }
+  }, [id, listing]);
   
     return (
       <div>

@@ -48,7 +48,7 @@ function CarItem({ car }) {
           </div>
           <p className="text-blue-700 cursor-pointer"
           onClick={() => {
-            navigate(`/car/${car.id}`);
+            navigate(`/car/${car.id}` , {state : {listing : car}});
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           >

@@ -115,7 +115,7 @@ function Index() {
             className="p-1 border-b border-gray-200 border-2 gap-3 flex flex-col justify-between">
               <div className="h-40 bg-gray-200 overflow-hidden">
                 <img 
-                onClick={()=> navigate(`/car/${listing.id}`)}
+                onClick={()=> navigate(`/car/${listing.id}` , {state : {listing : listing}})}
                 src={listing.imageUrl} className="object-cover w-full h-full" />
               </div>
 
