@@ -94,7 +94,7 @@ function Search() {
             </Select>
             <IoIosSearch
                 onClick={handleSearch}
-                className="md:size-8 w-full h-6 bg-blue-600 text-white rounded-full hover:scale-125 cursor-pointer transition-all duration-150 p-1"
+                className="md:size-8 w-full min-w-8 h-6 bg-blue-600 text-white rounded-full hover:scale-125 cursor-pointer transition-all duration-150 p-1"
             />
         </div>
     );

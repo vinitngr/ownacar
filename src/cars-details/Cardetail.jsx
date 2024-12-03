@@ -30,14 +30,13 @@ function Cardetail() {
           .from(listingsTable)
           .where(eq(listingsTable.id, id));
         setlistingdetail(result);
-        console.log("Data fetched:", result);
       } catch (error) {
         console.error("Error fetching car details:", error);
       }
     }
 
     if (listing) {
-      console.log("Using state-provided listing:", listing);
+      ("Using state-provided listing:", listing);
       setlistingdetail([listing]);
     } else {
       console.log("No state provided, fetching from API...");

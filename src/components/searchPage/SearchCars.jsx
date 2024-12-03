@@ -20,7 +20,6 @@ function SearchCars() {
   const baseprice= Number(price?.split('$')[0])
   const upperprice= Number(price?.split('$-')[1].split('$')[0])
   const segment = searchParams.get('segment');
-  // console.log(category , maker , baseprice , upperprice , typeof baseprice  , condition);
   useEffect(() => {
 const fetchListings = async () => {
     setLoading(true); 
