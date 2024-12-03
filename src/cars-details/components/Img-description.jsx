@@ -4,7 +4,7 @@ function Imgdescription({listing}) {
   return (
     <>
         <Carousel 
-        className="rounded overflow-hidden" orientation="horizontal">
+        className="rounded overflow-hidden aspect-video" orientation="horizontal">
           <CarouselContent>
             <CarouselItem>
               <img src={listing.imageUrl} className="w-full aspect-video object-cover" alt="car pic" />

@@ -35,17 +35,17 @@ function DeleteListingButton({ listingId , userName }) {
   return (
   
     isSuperAdmin && (
-      <>
+      <div className="order-4 mt-4">
       <AlertDialog>
         <AlertDialogTrigger
-          className="delete text-red-400 rounded p-1 gap-2  flex justify-center bg-red-100">
+          className="delete text-red-400 rounded p-2 gap-2 w-full flex justify-center border-2 bg-red-100 border-red-200">
           Delete <Trash/>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you sure you want to delete your listing?</AlertDialogTitle>
+            <AlertDialogTitle>Are you sure you want to delete this listing?</AlertDialogTitle>
             <AlertDialogDescription>
-              Are you sure you want to delete this item from user : {userName}? this action can`t be undo and this will reflect change in another users too
+              You are deletinng this listing from user : {userName}? this action can`t be undo and this will reflect change in another users too
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -59,7 +59,7 @@ function DeleteListingButton({ listingId , userName }) {
         </AlertDialogContent>
       </AlertDialog>
 
-      </>
+      </div>
     )
   );
 }

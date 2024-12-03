@@ -45,14 +45,14 @@ function Cardetail() {
               <div className="text-4xl font-semibold py-2">{listingdetail[0].listingTitle}</div>
               <div className="mb-2 font-light">{listingdetail[0].tagline}</div>
               <Tags listing={listingdetail[0]}/>
-              <div className="grid grid-cols-1 lg:grid-cols-3  gap-4 lg:gap-10">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-10 items-start">
                 <div className="grid lg:col-span-2">
                   <Imgdescription listing={listingdetail[0]}/>
                   <Features features={listingdetail[0].features}/>
+                  <DeleteListingButton listingId={listingdetail[0].id} userName={listingdetail[0]?.username}/>
                 </div>
                 <div className="grid gap-4">
                   <CarPrice Sprice={listingdetail[0].sellingPrice} Oprice={listingdetail[0].originalPrice} />
-                  <DeleteListingButton listingId={listingdetail[0].id} userName={listingdetail[0]?.username}/>
                   <Cardetails details={listingdetail[0]} />
                   <ContactOwner details={listingdetail[0]} />
                 </div>
