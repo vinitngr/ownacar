@@ -13,6 +13,7 @@ import Imgdescription from "./components/Img-description"
 import Tags from "./components/Tags"
 import Cardetailskeleton from "./components/Skeleton"
 import MostSearched from "@/components/MostSearched"
+import DeleteListingButton from "./components/SuperDelete"
 function Cardetail() {
   const [listingdetail, setlistingdetail] = useState();
   const { id } = useParams();
@@ -51,6 +52,7 @@ function Cardetail() {
                 </div>
                 <div className="grid gap-4">
                   <CarPrice Sprice={listingdetail[0].sellingPrice} Oprice={listingdetail[0].originalPrice} />
+                  <DeleteListingButton listingId={listingdetail[0].id} userName={listingdetail[0]?.username}/>
                   <Cardetails details={listingdetail[0]} />
                   <ContactOwner details={listingdetail[0]} />
                 </div>
