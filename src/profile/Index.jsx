@@ -97,7 +97,7 @@ function Index() {
         <div className="flex justify-between">
           <div className="text-3xl googlehandfont font-bold">My Listings</div>
           <Link to="/addListing">
-            <Button className="bg-blue-600 googlehandfont rounded-full text-white hover:text-black">
+            <Button className="bg-blue-600 googlehandfont rounded-full text-white hover:bg-blue-700">
               + Add New Listing
             </Button>
           </Link>
