@@ -10,7 +10,7 @@ function ContactOwner({details}) {
           </div>
           <div>
             <div className="text-2xl">{details.username}</div>
-            <div className="font-extralight text-sm text-zinc-600">{details.userEmail.replace(/^(\w+?)(\d+)(@gmail\.com)$/, "*****$2$3")}</div>
+            <div className="font-extralight text-sm text-zinc-600">{details.userEmail?.replace(/^(\w+?)(\d+)(@gmail\.com)$/, "*****$2$3")}</div>
           </div>
         </div>  
           <button className="bg-blue-600 text-white w-full py-1 rounded mt-6"> Message Seller</button>

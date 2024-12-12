@@ -30,55 +30,81 @@ function Index() {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const result = await db.select().from(listingsTable)
-        .where(eq(listingsTable.sellersId, user.id));
-        setListings(result);
+        const profile_listings = localStorage.getItem("profile_listings");
+  
+        if (profile_listings) {
+          setListings(JSON.parse(profile_listings));
+        } else {
+          const result = await db.select().from(listingsTable)
+            .where(eq(listingsTable.sellersId, user.id));
+          setListings(result);
+  
+          localStorage.setItem("profile_listings", JSON.stringify(result));
+        }
       } catch (error) {
         console.error("Error fetching listings:", error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchListings();
-  },[user.id]);
-
-
+  }, [user.id]);
 
   async function handleDelete(listing) {
-    // eslint-disable-next-line no-unused-vars
-    const {id , ...otherInListing} = listing;
-
+    const { id, ...otherInListing } = listing;
     try {
+      // Delete from the database
       await db.delete(listingsTable).where(eq(listingsTable.id, listing.id));
-
       setListings((prevListings) =>
         prevListings.filter((l) => l.id !== listing.id)
       );
+  
+      const storedListings = JSON.parse(localStorage.getItem("profile_listings")) || [];
+      const updatedListings = storedListings.filter((l) => l.id !== listing.id);
       
-      toast('Listing deleted successfully', {
-        cancel: {
-          label: 'Undo',
-          onClick: async () => {
-            try {
-              await db.insert(listingsTable).values(otherInListing);
-              setListings((prevListings) => [...prevListings, listing]);
-              console.log("Listing Restored:", listing.id);
-            } catch (insertError) {
-              console.error("Error restoring listing:", insertError);
-              toast('Failed to restore listing', { type: 'error' });
-            }
+      localStorage.setItem("profile_listings", JSON.stringify(updatedListings));
+
+      toast(
+        'Listing deleted successfully',
+        {
+          cancel: {
+            label: 'Undo',
+            onClick: async () => {
+              try {
+                // Restore in the database
+                const result = await db.insert(listingsTable).values(otherInListing);
+                // Restore in state
+                console.log("Listing Restored:", result);
+                setListings((prevListings) => [...prevListings, listing]);
+                // Restore in local storage
+                if(result){
+                  const restoredListings = [...updatedListings, listing];
+
+                  localStorage.setItem(
+                    "profile_listings",
+                    JSON.stringify(restoredListings)
+                  );
+                  console.log("Listing Restored:", listing.id);
+                }
+              } catch (insertError) {
+                console.error("Error restoring listing:", insertError);
+                toast('Failed to restore listing', { type: 'error' });
+              }
+            },
           },
         },
-      } , {duration: 3000});
-      toast.success('Listing Deleted successfully' , {duration:1000})
+        { duration: 2000 }
+      );
+  
+      toast.success('Listing Deleted successfully', { duration: 1000 });
       console.log('listing deleted successfully');
-      
     } catch (error) {
       console.error("Error deleting listing:", error);
       toast('Failed to delete listing', { type: 'error' });
     }
   }
+  
 
   async function handleEdit(listing) {
     try {

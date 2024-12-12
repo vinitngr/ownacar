@@ -78,8 +78,15 @@ function AddListing() {
           })
           .where(eq(listingsTable.id, listing.id))
           .returning({ id: listingsTable.id });
+          const storedListings = JSON.parse(localStorage.getItem("profile_listings")) || [];
+          const updatedListings = storedListings.map((item) =>
+            item.id === listing.id ? { ...item, ...updateData, features } : item
+          );
+          localStorage.setItem("profile_listings", JSON.stringify(updatedListings));
+
           toast.success('Listing Updated successfully' , {duration:1500})
           console.log('listing edited successfully' , result[0].id) ;
+          
         } catch (error) {
           console.error("Error while updating data:", error);
           toast.error('Error Updating Listing' , {duration:1500})
@@ -94,25 +101,33 @@ function AddListing() {
         return;
       }
       try {
-        const result = await db
-          .insert(listingsTable)
-          .values({
-            ...formData,
-            sellersId: user.id,
-            features: JSON.stringify(features),
-            userImageUrl: user.imageUrl,
-            userEmail: user.primaryEmailAddress?.emailAddress,
-            username: user.fullName
-          })
-          .returning({ id: listingsTable.id });
-          toast.success('Listing Added successfully' , {duration:1500})
-          console.error('Listing added successfully' , result[0].id);
-        } catch (error) {
-          console.error("Error inserting data:", error);
-          toast.error('Error adding listing' , {duration:1500})
-        }finally{
-          navigate("/profile"); // Redirect on success
-        }
+  const result = await db
+    .insert(listingsTable)
+    .values({
+      ...formData,
+      sellersId: user.id,
+      features: JSON.stringify(features),
+      userImageUrl: user.imageUrl,
+      userEmail: user.primaryEmailAddress?.emailAddress,
+      username: user.fullName
+    })
+    .returning({ id: listingsTable.id });
+
+  // Add new listing to local storage
+  const storedListings = JSON.parse(localStorage.getItem("profile_listings")) || [];
+  const newListing = { ...formData, id: result[0].id, features };
+  storedListings.push(newListing);
+  localStorage.setItem("profile_listings", JSON.stringify(storedListings));
+
+  toast.success('Listing Added successfully', { duration: 1500 });
+  console.log('Listing added successfully', result[0].id);
+} catch (error) {
+  console.error("Error inserting data:", error);
+  toast.error('Error adding listing', { duration: 1500 });
+} finally {
+  navigate("/profile"); // Redirect on success
+}
+
     }
   };
 
