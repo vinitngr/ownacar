@@ -66,6 +66,8 @@ function AddListing() {
     if (mode === "edit") {
       try {
         const { id, ...updateData } = formData;
+      
+        // Database update
         const result = await db
           .update(listingsTable)
           .set({
@@ -78,21 +80,28 @@ function AddListing() {
           })
           .where(eq(listingsTable.id, listing.id))
           .returning({ id: listingsTable.id });
-          const storedListings = JSON.parse(localStorage.getItem("profile_listings")) || [];
-          const updatedListings = storedListings.map((item) =>
-            item.id === listing.id ? { ...item, ...updateData, features } : item
-          );
-          localStorage.setItem("profile_listings", JSON.stringify(updatedListings));
-
-          toast.success('Listing Updated successfully' , {duration:1500})
-          console.log('listing edited successfully' , result[0].id) ;
           
-        } catch (error) {
-          console.error("Error while updating data:", error);
-          toast.error('Error Updating Listing' , {duration:1500})
-        }finally{
-          navigate("/profile"); 
+        if (!result || result.length === 0) {
+          throw new Error("Database update failed"); // Force the catch block to execute
+        }
+      
+        const storedListings = JSON.parse(localStorage.getItem("profile_listings")) || [];
+        const updatedListings = storedListings.map((item) =>
+          item.id === listing.id ? { ...item, ...updateData, features } : item
+        );
+        localStorage.setItem("profile_listings", JSON.stringify(updatedListings));
+      
+        toast.success("Listing Updated successfully", { duration: 1500 });
+        console.log("Listing edited successfully", result[0].id);
+      } catch (error) {
+        // Handle any errors
+        console.error("Error while updating data:", error);
+        toast.error("Error Updating Listing", { duration: 1500 });
+      } finally {
+        // Always navigate to the profile page
+        navigate("/profile");
       }
+      
     } 
     // If creating a new listing
     else {

@@ -65,31 +65,26 @@ function Index() {
       
       localStorage.setItem("profile_listings", JSON.stringify(updatedListings));
 
-      toast(
+      toast.success(
         'Listing deleted successfully',
         {
           cancel: {
             label: 'Undo',
             onClick: async () => {
               try {
-                // Restore in the database
                 const result = await db.insert(listingsTable).values(otherInListing);
-                // Restore in state
                 console.log("Listing Restored:", result);
+      
                 setListings((prevListings) => [...prevListings, listing]);
-                // Restore in local storage
-                if(result){
-                  const restoredListings = [...updatedListings, listing];
-
-                  localStorage.setItem(
-                    "profile_listings",
-                    JSON.stringify(restoredListings)
-                  );
-                  console.log("Listing Restored:", listing.id);
-                }
+      
+                const restoredListings = [...updatedListings, listing];
+                localStorage.setItem("profile_listings", JSON.stringify(restoredListings));
+                console.log("Listing Restored:", listing.id);
+                toast.success('Successfully restored listing');
+      
               } catch (insertError) {
                 console.error("Error restoring listing:", insertError);
-                toast('Failed to restore listing', { type: 'error' });
+                toast.error('Failed to restore listing');
               }
             },
           },
@@ -97,7 +92,6 @@ function Index() {
         { duration: 2000 }
       );
   
-      toast.success('Listing Deleted successfully', { duration: 1000 });
       console.log('listing deleted successfully');
     } catch (error) {
       console.error("Error deleting listing:", error);
