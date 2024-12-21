@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Search from "../Search";
 import { listingsTable } from "@/lib/schema";
 
@@ -52,7 +53,7 @@ function SearchCars() {
       ]),
       listingDescription: faker.lorem.paragraph(),
       features: JSON.stringify(generateRandomFeatures()),
-      imageUrl: faker.image.imageUrl(800, 600, 'car', true),
+      imageUrl: faker.image.transport(),
       userImageUrl: faker.internet.avatar(),
       userEmail: faker.internet.email(),
       username: faker.name.findName(),
