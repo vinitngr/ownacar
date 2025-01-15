@@ -33,9 +33,9 @@ function Search() {
         
         if (params.toString()) {
             navigate(`/search?${params.toString()}`); 
-          } else {
+        } else {
             document.querySelector(".addborder").classList.add("border-2", "border-blue-400");
-          }
+        }
     };
 
     return (

@@ -37,13 +37,13 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: (
-        <TitleWrapper title="ownacar" component={<SearchCars/>} />
+        <TitleWrapper title="search - OwnaCar" component={<SearchCars/>} />
     ),
   },
   {
     path: "/car/:id",
     element: (
-        <TitleWrapper title="ownacar" component={<Cardetail/>} />
+        <TitleWrapper title="Car - OwnaCar" component={<Cardetail/>} />
     ),
   },
   {
@@ -65,6 +65,7 @@ const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
 }
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
