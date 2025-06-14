@@ -1,3 +1,6 @@
+> ⚠️ **Critical Warning:** This repository publicly exposes sensitive API keys through direct frontend usage.  
+> Due to significant security risks, this project has been deprecated. 
+
 # E-commerce Car Selling Website 🚗
 
 An e-commerce platform for car sales built with modern web technologies. This website allows users to browse, filter, and purchase cars, with user-friendly features like sorting, filtering, authentication, and CRUD operations.
